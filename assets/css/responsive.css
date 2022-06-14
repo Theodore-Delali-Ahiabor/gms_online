@@ -1,0 +1,106 @@
+
+@media only screen and (max-width: 1200px){
+    html{
+        font-size: 9.5px;
+    }
+    body{
+        font-size: 15.75px;
+    }
+    aside{
+        position: absolute;
+        left: -24rem;
+    }
+    main{
+        width: 100%;
+    }
+    .aside-hide,
+    .aside-show{
+        display: block;
+    }
+}
+
+@media only screen and (max-width: 990px){
+    html{
+        font-size: 9px;
+    }
+    body{
+        font-size: 15.5px;
+    }
+    .carosel-wrapper{
+        grid-column: span 6;
+    }
+    .rate-palate{
+        grid-column: span 2 !important;
+    }
+    .exchange-wrapper{
+        grid-column: span 6;
+
+    }
+}
+
+@media only screen and (max-width: 780px){
+    html{
+        font-size: 8.5px;
+    }
+    body{
+        font-size: 15.25px;
+    }
+    main{
+        padding: 1rem 2.5rem;
+    }
+    .rate-palate{
+        grid-column: span 3 !important;
+    }
+    .testimonials{
+        grid-column: span 6;
+        grid-row: 8 / 10;
+    }
+    .reserve{
+        grid-column: span 3;
+        grid-row: span 2;
+    }
+    .recent-exchange-wrapper{
+        grid-column: span 3;
+        grid-row: span 2;
+    }
+}
+
+@media only screen and (max-width: 480px){
+    html{
+        font-size: 8px;
+    }
+    body{
+        font-size: 15px;
+    }
+    main{
+        padding: 1rem 2rem;
+    }
+    .main-wrapper{
+        grid-gap: 2.5rem;
+    }
+    .sign-buttons{
+        display: none !important;
+    }
+    .sign-icon{
+        display: block !important;
+    }
+    .rate-palate:nth-child(1),
+    .rate-palate:nth-child(2){
+        grid-row: 2 / 3 ;
+    }
+    .rate-palate:nth-child(3),
+    .rate-palate:nth-child(4){
+        grid-row: 4 / 5 ;
+    }
+    .rate-palate:nth-child(5),
+    .rate-palate:nth-child(6){
+        grid-row: 8 / 9 ;
+    }
+    .carosel-wrapper{
+        grid-row: 3 / 4;
+    }
+    .auth-form{
+        min-width: 100%;
+    }
+    
+}
