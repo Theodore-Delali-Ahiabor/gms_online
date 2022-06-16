@@ -1,52 +1,37 @@
-<!-- Add New Customer Modal -->
-<div class="modalWrapper " style="display:none;" id="addNewCustomer">
+<!-- Add New Supplier Modal -->
+<div class="modalWrapper " style="display:none;" id="addNewSupplier">
     <div class="modalOuter"></div>
     <div class="modalContainer largeContainer relative" style="background:white;">
         <span class="modalClose required">
           <i class="fa fa-times"></i>
         </span>
         <div class="modalHead center">
-            <span class="modalTitle">Add New Customer</h1>
+            <span class="modalTitle">Add New Supplier</h1>
         </div>
         <div class="modalBody">
-            <form action="" class="modal-form center" id="addNewCustomerForm"  enctype="multipart/form-data">
+            <form action="" class="modal-form center" id="addNewSupplierForm" >
                 <div class="form-row flex">
                     <div class="form-column ">
-                        <div class="left">Photo</div>
-                        <img src="../images/profiles/no-profile.jpg" alt="" class="customerPhoto">
-                        <input type="file" name="photo" class="customerPhotoFile" style="border: none;">
+                        <div class="left">Brand Name <span class="required">*</span></div>
+                        <input type="text" name="name" class="name" >
                     </div>
                     <div class="form-column">
-                        <div class="left">First Name <span class="required">*</span></div>
-                        <input type="text" name="fname" class="fname" >
-                    </div>
-                    <div class="form-column">
-                        <div class="left">Other Name(s)</div>
-                        <input type="text" name="oname" class="oname">
-                    </div>
-                </div>
-                <div class="form-row flex">
-                    <div class="form-column">
-                        <div class="left">Last Name  <span class="required">*</span></div>
-                        <input type="text" name="lname" class="lname">
+                        <div class="left">Business Sector <span class="required">*</span></div>
+                        <select name="sector"  class="sectors" ></select>
                     </div>
                     <div class="form-column">
                         <div class="left">Phone <span class="required">*</span></div>
-                        <input type="tel" name="phone" class="phone">
-                    </div>
-                    <div class="form-column">
-                        <div class="left">Email <span class="required">*</span></div>
-                        <input type="email" name="email" class="email">
+                        <input type="text" name="phone" class="phone">
                     </div>
                 </div>
                 <div class="form-row flex">
                     <div class="form-column">
-                        <div class="left">Birth Date <span class="required">*</span></div>
-                        <input type="date" name="birthdate" class="birthdate">
+                        <div class="left">Email</div>
+                        <input type="eamil" name="email" class="email">
                     </div>
                     <div class="form-column">
-                        <div class="left">Gender</div>
-                        <select name="gender" class="genders" ></select>
+                        <div class="left">P.O.Box</div>
+                        <input type="tel" name="box" class="box">
                     </div>
                     <div class="form-column">
                         <div class="left">Country <span class="required">*</span></div>
@@ -87,55 +72,40 @@
         </div>
     </div>
 </div>
-<!-- Edit Customer Modal -->
-<div class="modalWrapper " style="display:none;" id="editCustomer">
+<!-- Edit Supplier Modal -->
+<div class="modalWrapper " style="display:none;" id="editSupplier">
 <div class="modalOuter"></div>
     <div class="modalContainer largeContainer relative" style="background:white;">
         <span class="modalClose required">
           <i class="fa fa-times"></i>
         </span>
         <div class="modalHead center">
-            <span class="modalTitle">Edit Customer</h1>
+            <span class="modalTitle">Edit Supplier</h1>
         </div>
         <div class="modalBody">
-            <form action="" class="modal-form center" id="editCustomerForm"  enctype="multipart/form-data">
-                <div class="form-row flex">
+            <form action="" class="modal-form center" id="editSupplierForm" >
+            <div class="form-row flex">
                     <div class="form-column ">
-                        <div class="left">Photo</div>
-                        <img src="../images/profiles/no-profile.jpg" alt="" class="customerPhoto">
-                        <input type="file" name="photo" class="customerPhotoFile" style="border: none;">
+                        <div class="left">Brand Name <span class="required">*</span></div>
+                        <input type="text" name="name" class="name" >
                     </div>
                     <div class="form-column">
-                        <div class="left">First Name <span class="required">*</span></div>
-                        <input type="text" name="fname" class="fname" >
-                    </div>
-                    <div class="form-column">
-                        <div class="left">Other Name(s)</div>
-                        <input type="text" name="oname" class="oname">
-                    </div>
-                </div>
-                <div class="form-row flex">
-                    <div class="form-column">
-                        <div class="left">Last Name  <span class="required">*</span></div>
-                        <input type="text" name="lname" class="lname">
+                        <div class="left">Business Sector <span class="required">*</span></div>
+                        <select name="sector"  class="sectors" ></select>
                     </div>
                     <div class="form-column">
                         <div class="left">Phone <span class="required">*</span></div>
-                        <input type="tel" name="phone" class="phone">
-                    </div>
-                    <div class="form-column">
-                        <div class="left">Email <span class="required">*</span></div>
-                        <input type="email" name="email" class="email">
+                        <input type="text" name="phone" class="phone">
                     </div>
                 </div>
                 <div class="form-row flex">
                     <div class="form-column">
-                        <div class="left">Birth Date <span class="required">*</span></div>
-                        <input type="date" name="birthdate" class="birthdate">
+                        <div class="left">Email</div>
+                        <input type="eamil" name="email" class="email">
                     </div>
                     <div class="form-column">
-                        <div class="left">Gender <span class="required">*</span></div>
-                        <select name="gender" class="genders" ></select>
+                        <div class="left">P.O.Box</div>
+                        <input type="tel" name="box" class="box">
                     </div>
                     <div class="form-column">
                         <div class="left">Country <span class="required">*</span></div>
@@ -177,22 +147,22 @@
         </div>
     </div>
 </div>
-<!-- View Customer Modal -->
-<div class="modalWrapper " style="display:none;" id="viewCustomer">
+<!-- View Supplier Modal -->
+<div class="modalWrapper " style="display:none;" id="viewSupplier">
 <div class="modalOuter"></div>
         <div class="modalContainer mediumContainer relative" style="background:white;">
         <span class="modalClose required">
           <i class="fa fa-times"></i>
         </span>
         <div class="modalHead center">
-            <span class="modalTitle">Customer Profile</h1>
+            <span class="modalTitle">Supplier Profile</h1>
         </div>
         <div class="modalBody"><br>
-            <table style="width: 100%;" id="customerReport">
+            <table style="width: 100%;" id="supplierReport">
 					<tbody>
 						<tr>
                             <td rowspan="8" colspan="2">
-                                <img src="../images/profiles/no-profile.jpg" alt="" width="250" class="customerPhoto">
+                                <img src="../images/profiles/no-profile.jpg" alt="" width="250" class="supplierPhoto">
                             </td>
 							<td>Username: </td><td class="fg-black username"></td>
 						</tr>
@@ -236,28 +206,28 @@
 					</tbody>
 				</table><br>
                 <div class="center">
-                    <button class="btn btn-green printCustomer"><i class="fa fa-print"></i> Print</button>
+                    <button class="btn btn-green printSupplier"><i class="fa fa-print"></i> Print</button>
                 </div>
           </div>
         </div>
     </div>
 </div>
-<!-- Delete Customer Modal -->
-<div class="modalWrapper " style="display:none;" id="deleteCustomer">
+<!-- Delete Supplier Modal -->
+<div class="modalWrapper " style="display:none;" id="deleteSupplier">
         <div class="modalOuter"></div>
             <div class="modalContainer relative" style="background:white;">
             <span class="modalClose required">
             <i class="fa fa-times"></i>
             </span>
             <div class="modalHead center">
-                <span class="modalTitle">Delete Customer</h1>
+                <span class="modalTitle">Delete Supplier</h1>
             </div>
             <div class="modalBody">
-            <form action="" class="modal-form center" id="deleteCustomerForm">
+            <form action="" class="modal-form center" id="deleteSupplierForm">
                 <div class="">
                     <h3 class="required">Warning!!!</h3>
                     <p>
-                        When you delete this Customer all data relating to him/her will be lost.<br> Are you sure to continue?
+                        When you delete this Supplier all data relating to him/her will be lost.<br> Are you sure to continue?
                     </p>
                 </div>
                 <input type="hidden" name="delete">
@@ -272,21 +242,21 @@
         </div>
     </div>
 </div>
-<!-- Toggle Customer Active Status Modal -->
-<div class="modalWrapper " style="display:none;" id="toggleCustomerStatus">
+<!-- Toggle Supplier Active Status Modal -->
+<div class="modalWrapper " style="display:none;" id="toggleSupplierStatus">
     <div class="modalOuter"></div>
         <div class="modalContainer relative" style="background:white;">
         <span class="modalClose required">
           <i class="fa fa-times"></i>
         </span>
         <div class="modalHead center">
-            <span class="modalTitle"><span class="newStatus"></span> Customer</h1>
+            <span class="modalTitle"><span class="newStatus"></span> Supplier</h1>
         </div>
         <div class="modalBody">
-          <form action="" class="modal-form center" id="toggleCustomerStatusForm">
+          <form action="" class="modal-form center" id="toggleSupplierStatusForm">
                 <div class="">
                     <p>
-                        You are about to <span class="newStatusColor"><span class="newStatus"></span></span> this customer.<br> Are you sure to continue?
+                        You are about to <span class="newStatusColor"><span class="newStatus"></span></span> this supplier.<br> Are you sure to continue?
                     </p>
                 </div>
                 <input type="hidden" name="id" class="id">
@@ -303,16 +273,16 @@
 <script>
     $(function(){
         /* select a photo file */
-        $(".customerPhotoFile").on("change", function(){
+        $(".supplierPhotoFile").on("change", function(){
             imagePreview(this);
         })
-        /* view customer show */
-        $(".viewCustomer").on("click", function(){
-            $("#viewCustomer").fadeIn();
+        /* view supplier show */
+        $(".viewSupplier").on("click", function(){
+            $("#viewSupplier").fadeIn();
             var id = $(this).data("id");
             $.ajax({
                 type: "POST",
-                url: "customersFetch.php",
+                url: "suppliersFetch.php",
                 data: {id:id},
                 dataType: 'json',
                 success: function(response){
@@ -323,61 +293,42 @@
                     }else if(response.type == "info"){
                         notify(response.message,'','info');
                     }else if(response.type == "success"){
-                        $("#viewCustomer .customerPhoto").attr("src","../images/Profiles/"+response.photo);                      
-                        $("#viewCustomer .username").html(response.username);
-                        $("#viewCustomer .fname").html(response.fname);
-                        $("#viewCustomer .oname").html(response.oname);
-                        $("#viewCustomer .lname").html(response.lname);
-                        $("#viewCustomer .phone").html(response.phone);
-                        $("#viewCustomer .email").html(response.email);
-                        $("#viewCustomer .age").html(response.age);
-                        $("#viewCustomer .gender").html(response.gender);
-                        $('#viewCustomer .department').html(response.department);
-                        $('#viewCustomer .country').html(response.country);
-                        $('#viewCustomer .region').html(response.region);
-                        $('#viewCustomer .city').html(response.city);
-                        $("#viewCustomer .street").html(response.street);
-                        $("#viewCustomer .house").html(response.house);
-                        $("#viewCustomer .landmark").html(response.landmark);
-                        $("#viewCustomer .position").html(response.position);
-                        $('#viewCustomer .relationship').html(response.relationship);
-                        $("#viewCustomer .salary").html(response.salary);
+                        $("#viewSupplier .supplierPhoto").attr("src","../images/Profiles/"+response.photo);                      
+                        $("#viewSupplier .username").html(response.username);
+                        $("#viewSupplier .fname").html(response.fname);
+                        $("#viewSupplier .oname").html(response.oname);
+                        $("#viewSupplier .lname").html(response.lname);
+                        $("#viewSupplier .phone").html(response.phone);
+                        $("#viewSupplier .email").html(response.email);
+                        $("#viewSupplier .age").html(response.age);
+                        $("#viewSupplier .gender").html(response.gender);
+                        $('#viewSupplier .department').html(response.department);
+                        $('#viewSupplier .country').html(response.country);
+                        $('#viewSupplier .region').html(response.region);
+                        $('#viewSupplier .city').html(response.city);
+                        $("#viewSupplier .street").html(response.street);
+                        $("#viewSupplier .house").html(response.house);
+                        $("#viewSupplier .landmark").html(response.landmark);
+                        $("#viewSupplier .position").html(response.position);
+                        $('#viewSupplier .relationship').html(response.relationship);
+                        $("#viewSupplier .salary").html(response.salary);
                     }
                 }
             })
         })
-        /* add new Customer modal show */
-        $(".newCustomer").on("click", function(){
+        /* add new Supplier modal show */
+        $(".newSupplier").on("click", function(){
             getCombo();
-            $("#addNewCustomer").fadeIn();
+            $("#addNewSupplier").fadeIn();
         })
-        /* toggle Customer Status show */
-        $(".toggleCustomerStatus").click(function(){
-            $("#toggleCustomerStatus").fadeIn();
-            var id = $(this).data("id");
-            var status = $(this).data("status");
-            if(status == 1){
-                $(".newStatus").html("Deactivate");
-                $(".newStatusColor").removeClass("fg-forestgreen");
-                $(".newStatusColor").addClass("fg-crimson");
-                $("#toggleCustomerStatusForm .id").val(id);
-                $("#toggleCustomerStatusForm .status").val(0);
-            }else{
-                $(".newStatus").html("Activate");
-                $(".newStatusColor").addClass("fg-forestgreen");
-                $(".newStatusColor").removeClass("fg-crimson");
-                $("#toggleCustomerStatusForm .id").val(id);
-                $("#toggleCustomerStatusForm .status").val(1);
-            }
-        })
-        /* edit Customer modal show */
-        $(".editCustomer").click(function(){
+        /* edit Supplier modal show */
+        $(".editSupplier").click(function(){
             getCombo();
-            $("#editCustomer").fadeIn();
+            $("#editSupplier").fadeIn();
             var id = $(this).data("id");
             $.ajax({
                 type: "POST",
-                url: "customersFetch.php",
+                url: "suppliersFetch.php",
                 data: {id:id},
                 dataType: 'json',
                 success: function(response){
@@ -390,51 +341,51 @@
                     }else if(response.type == "success"){
                         getRegions(response.countryId);
                         getCities(response.cityId);
-                        $("#editCustomerForm .id").val(response.id);
-                        $("#editCustomerForm .customerPhoto").attr("src","../images/Profiles/"+response.photo);                       
-                        $("#editCustomerForm .fname").val(response.fname);
-                        $("#editCustomerForm .oname").val(response.oname);
-                        $("#editCustomerForm .lname").val(response.lname);
-                        $("#editCustomerForm .phone").val(response.phone);
-                        $("#editCustomerForm .email").val(response.email);
-                        $("#editCustomerForm .birthdate").val(response.birthdate);
-                        $('#editCustomerForm .genders option[value="'+response.genderId+'"]').attr("selected", "selected");
-                        $('#editCustomerForm .departments option[value="'+response.departmentId+'"]').attr("selected", "selected");
-                        $('#editCustomerForm .countries option[value="'+response.countryId+'"]').attr("selected", "selected");
-                        $('#editCustomerForm .regions option[value="'+response.regionId+'"]').attr("selected", "selected");
-                        $('#editCustomerForm .cities option[value="'+response.cityId+'"]').attr("selected", "selected");
-                        $("#editCustomerForm .street").val(response.street);
-                        $("#editCustomerForm .house").val(response.house);
-                        $("#editCustomerForm .landmark").val(response.landmark);
-                        $("#editCustomerForm .position").val(response.position);
-                        $('#editCustomerForm .relationships option[value="'+response.relationshipId+'"]').attr("selected", "selected");
-                        $("#editCustomerForm .salary").val(response.salary);
+                        $("#editSupplierForm .id").val(response.id);
+                        $("#editSupplierForm .supplierPhoto").attr("src","../images/Profiles/"+response.photo);                       
+                        $("#editSupplierForm .fname").val(response.fname);
+                        $("#editSupplierForm .oname").val(response.oname);
+                        $("#editSupplierForm .lname").val(response.lname);
+                        $("#editSupplierForm .phone").val(response.phone);
+                        $("#editSupplierForm .email").val(response.email);
+                        $("#editSupplierForm .birthdate").val(response.birthdate);
+                        $('#editSupplierForm .genders option[value="'+response.genderId+'"]').attr("selected", "selected");
+                        $('#editSupplierForm .departments option[value="'+response.departmentId+'"]').attr("selected", "selected");
+                        $('#editSupplierForm .countries option[value="'+response.countryId+'"]').attr("selected", "selected");
+                        $('#editSupplierForm .regions option[value="'+response.regionId+'"]').attr("selected", "selected");
+                        $('#editSupplierForm .cities option[value="'+response.cityId+'"]').attr("selected", "selected");
+                        $("#editSupplierForm .street").val(response.street);
+                        $("#editSupplierForm .house").val(response.house);
+                        $("#editSupplierForm .landmark").val(response.landmark);
+                        $("#editSupplierForm .position").val(response.position);
+                        $('#editSupplierForm .relationships option[value="'+response.relationshipId+'"]').attr("selected", "selected");
+                        $("#editSupplierForm .salary").val(response.salary);
                     }
                 }
             })
         })
-        /* delete Customer modal show */
-        $(".deleteCustomer").click(function(){
-            $("#deleteCustomer").fadeIn();
-            $("#deleteCustomer .id").val($(this).data("id"));
+        /* delete Supplier modal show */
+        $(".deleteSupplier").click(function(){
+            $("#deleteSupplier").fadeIn();
+            $("#deleteSupplier .id").val($(this).data("id"));
         })
     })
     function imagePreview(fileInput) {
         if (fileInput.files && fileInput.files[0]) {
             var fileReader = new FileReader();
             fileReader.onload = function (event) {
-                $('.customerPhoto').attr('src', event.target.result);
+                $('.supplierPhoto').attr('src', event.target.result);
             };
             fileReader.readAsDataURL(fileInput.files[0]);
         }
     }
     
-    /* add new Customer */
-    $(document).on('submit',"#addNewCustomerForm", function(e){
+    /* add new Supplier */
+    $(document).on('submit',"#addNewSupplierForm", function(e){
         e.preventDefault();
         $.ajax({
             type: "POST",
-			url: "customersManage.php",
+			url: "suppliersManage.php",
 			data: new FormData(this),
 			mimeType: 'application/json',
 			dataType: 'json',
@@ -455,12 +406,12 @@
         })
     })
 
-    /* edit Customer */
-    $("#editCustomerForm").on('submit', function(e){
+    /* edit Supplier */
+    $("#editSupplierForm").on('submit', function(e){
         e.preventDefault();
         $.ajax({
             type: "POST",
-			url: "customersManage.php",
+			url: "suppliersManage.php",
 			data: new FormData(this),
 			mimeType: 'application/json',
 			dataType: 'json',
@@ -481,13 +432,13 @@
             }
         })
     })
-     /* delete Customer */
-     $("#deleteCustomerForm").on('submit', function(e){
+     /* delete Supplier */
+     $("#deleteSupplierForm").on('submit', function(e){
         e.preventDefault();
         var data = $(this).serialize();
         $.ajax({
             type: "POST",
-			url: "CustomersManage.php",
+			url: "SuppliersManage.php",
 			data: data,
             dataType: 'json',
             success: function(response){
@@ -503,29 +454,7 @@
             }
         })
     })
-    /* Toggle Customer Status */
-    $("#toggleCustomerStatusForm").on('submit', function(e){
-        e.preventDefault();
-        var data = $(this).serialize();
-        $.ajax({
-            type: "POST",
-			url: "CustomersManage.php",
-			data: data,
-            dataType: 'json',
-            success: function(response){
-                if (response.type == "error"){
-                    notify(response.message,'','error');
-                }else if(response.type == "warning"){
-                    notify(response.message,'','warning');
-                }else if(response.type == "info"){
-                    notify(response.message,'','info');
-                }else if(response.type == "success"){
-                    location.reload(true);
-                }
-            }
-        })
-    })
-    $('.printCustomer').on('click', function(){
-        printContent("#customerReport");
+    $('.printSupplier').on('click', function(){
+        printContent("#supplierReport");
     })
 </script>

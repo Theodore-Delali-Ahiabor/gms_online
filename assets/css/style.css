@@ -21,12 +21,11 @@ aside{
     padding: 2rem; 
     z-index: 10;
     overflow-y: auto;
-    overflow-x: hidden;
 }
 .aside-hide{
     position: absolute;
     font-size: 2rem;
-    top: 2.25rem;
+    top: 1.25rem;
     right: 2rem;
     background: #00407029;
     color: #004070;
@@ -40,7 +39,7 @@ aside{
 }
 /* menu */
 aside .menu{
-    padding: 4.5rem 0;
+    padding: 2.5rem 0 1rem;
     list-style-type: none;
     width: 100%;
 }

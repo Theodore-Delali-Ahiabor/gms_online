@@ -15,7 +15,7 @@
             JOIN `countries` `c` ON `c`.`ID` = `a`.`CountryID`
             JOIN `regions` `r` ON `r`.`ID` = `a`.`RegionID`
             JOIN `cities` `ci` ON `ci`.`ID` = `a`.`CityID`
-            JOIN `Genders` `g` ON `g`.`ID` = `u`.`GenderID` WHERE `e`.`ID` = :id");
+            JOIN `genders` `g` ON `g`.`ID` = `u`.`GenderID` WHERE `e`.`ID` = :id");
             $stmt->execute(['id'=>$_POST['id']]);
             $row = $stmt->fetch();
             $output['id'] = $row['EmployeeID'];

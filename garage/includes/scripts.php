@@ -2,8 +2,6 @@
 <script src="../assets/js/notify.js"></script>
 <!-- DataTables -->
 <script src="../assets/DataTables/datatables.min.js"></script>
-<!-- PDFMaker -->
-<script src="../assets/DataTables/pdfmake-0.1.36/pdfmake.min.js"></script>
 <!-- CKEditor -->
 <script src="../assets/ckeditor/ckeditor.js"></script>
 
@@ -26,6 +24,9 @@
         })
         $('.user').mouseover(function(){
             $('.user-dropdown').show();
+        })
+        $('.user-dropdown').mouseleave(function(){
+            $('.user-dropdown').hide();
         })
         $('body').click(function(){
             if($('.user-dropdown').show()){
@@ -51,6 +52,9 @@
         $("#employeesTable").DataTable();
         $("#departmentsTable").DataTable();
         $("#customersTable").DataTable();
+        $("#automobilesTable").DataTable();
+        $("#inventoryTable").DataTable();
+        $("#suppliersTable").DataTable();
 
         /* fetch Regions */
         $(".countries").on("change", function(){
@@ -118,8 +122,21 @@
                     $(".genders").html(response.genders);
                     $(".departments").html(response.departments);
                     $(".relationships").html(response.relationships);
+                    $(".categories").html(response.categories);
+                    $(".makes").html(response.makes);
+                    $(".fuels").html(response.fuels);
+                    $(".locations").html(response.locations);
+                    $(".sectors").html(response.sectors);
                 }
             }
         });
+    }
+    /* print anyting */
+    function printContent(page){
+        var fullPage = $("body").html();
+        var printContent = $(page).html();
+        $("body").html(printContent);
+        window.print(); 
+        $("body").html(fullPage);
     }
 </script>

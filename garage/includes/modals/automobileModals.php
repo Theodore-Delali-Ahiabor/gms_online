@@ -1,7 +1,7 @@
 <!-- Add New Automobile Modal -->
 <div class="modalWrapper " style="display:none;" id="addNewAutomobile">
     <div class="modalOuter"></div>
-    <div class="modalContainer relative" style="background:white;">
+    <div class="largeContainer modalContainer relative" style="background:white;">
         <span class="modalClose required">
           <i class="fa fa-times"></i>
         </span>
@@ -13,16 +13,16 @@
                 <div class="form-row flex">
                     <div class="form-column ">
                         <div class="left">Photo</div>
-                        <img src="../images/profiles/no-profile.jpg" alt="" class="automobilePhoto">
+                        <img src="../images/autos/no-image.jpg" alt="" class="automobilePhoto">
                         <input type="file" name="photo" class="automobilePhotoFile" style="border: none;">
                     </div>
                     <div class="form-column">
-                        <div class="left">Owner <span class="required">*</span></div>
-                        <input type="text" name="owner" class="owner" ><button class="btn btn-theme-outline"><i class="fa fa-plus"></i></button>
+                        <div class="left">Category <span class="required">*</span></div>
+                        <select name="category"  class="categories" ></select>
                     </div>
                     <div class="form-column">
-                        <div class="left">Make</div>
-                        <input type="text" name="make" class="make">
+                        <div class="left">Make <span class="required">*</span></div>
+                        <select name="make" class="makes"></select>
                     </div>
                 </div>
                 <div class="form-row flex">
@@ -32,11 +32,21 @@
                     </div>
                     <div class="form-column">
                         <div class="left">Fuel <span class="required">*</span></div>
-                        <input type="text" name="phone" class="phone">
+                        <select name="fuel" class="fuels"></select>
                     </div>
                     <div class="form-column">
                         <div class="left">Year <span class="required">*</span></div>
-                        <input type="year" name="year" class="year">
+                        <select name="year" class="year">
+                            <?php
+                                $year = date('Y');
+                                for($i=2000; $i<=2065; $i++){
+                                $selected = ($i==$year)?'selected':'';
+                                echo "
+                                    <option value='".$i."' ".$selected.">".$i."</option>
+                                ";
+                                }
+                            ?>
+                        </select>
                     </div>
                 </div>
                 <div class="form-row flex">
@@ -45,33 +55,19 @@
                         <input type="text" name="color" class="color">
                     </div>
                     <div class="form-column">
-                        <div class="left">VIN <span class="required">*</span></div>
-                        <select name="vin" class="vin" ></select>
+                        <div class="left">VIN/Serial NUmber <span class="required">*</span></div>
+                        <input type="text" name="vin" class="vin">
                     </div>
                     <div class="form-column">
                         <div class="left">Registration Number</div>
-                        <select name="regnumber" class="regnumber"></select>
+                        <input type="text" name="registration" class="registration">
                     </div>
-                </div>
-                <div class="form-row flex">
-                    <div class="form-column">
-                        <div class="left">Category <span class="required">*</span></div>
-                        <select name="category"  class="category" ></select>
-                    </div>
-                    <!-- <div class="form-column">
-                        <div class="left">Region/State <span class="required">*</span></div>
-                        <select name="region" class="regions" ></select>
-                    </div>
-                    <div class="form-column">
-                        <div class="left">City/Town <span class="required">*</span></div>
-                        <select name="city" class="cities"></select>
-                    </div> -->
                 </div>
                 
                 <input type="hidden" name="add">
                 <br>
                 <div>
-                    <button type="submit" class="btn btn-green" id="saveNewAutomobile" ><i class="fa fa-save"></i> Save </button>
+                    <button type="submit" class="btn btn-green"><i class="fa fa-save"></i> Save </button>
                     <button type="reset" class="btn btn-red modalCancel"> <i class="fa fa-times"></i> Cancel </button>
                 </div>
           </form>
@@ -81,7 +77,7 @@
 <!-- Edit Automobile Modal -->
 <div class="modalWrapper " style="display:none;" id="editAutomobile">
 <div class="modalOuter"></div>
-    <div class="modalContainer relative" style="background:white;">
+    <div class="modalContainer largeContainer relative" style="background:white;">
         <span class="modalClose required">
           <i class="fa fa-times"></i>
         </span>
@@ -90,96 +86,65 @@
         </div>
         <div class="modalBody">
             <form action="" class="modal-form center" id="editAutomobileForm"  enctype="multipart/form-data">
-                <div class="form-row flex">
+            <div class="form-row flex">
                     <div class="form-column ">
                         <div class="left">Photo</div>
-                        <img src="../images/profiles/no-profile.jpg" alt="" class="automobilePhoto">
+                        <img src="../images/autos/no-image.jpg" alt="" class="automobilePhoto">
                         <input type="file" name="photo" class="automobilePhotoFile" style="border: none;">
                     </div>
                     <div class="form-column">
-                        <div class="left">First Name <span class="required">*</span></div>
-                        <input type="text" name="fname" class="fname" >
+                        <div class="left">Category <span class="required">*</span></div>
+                        <select name="category"  class="categories" ></select>
                     </div>
                     <div class="form-column">
-                        <div class="left">Other Name(s)</div>
-                        <input type="text" name="oname" class="oname">
+                        <div class="left">Make <span class="required">*</span></div>
+                        <select name="make" class="makes"></select>
                     </div>
                 </div>
                 <div class="form-row flex">
                     <div class="form-column">
-                        <div class="left">Last Name  <span class="required">*</span></div>
-                        <input type="text" name="lname" class="lname">
+                        <div class="left">Model<span class="required">*</span></div>
+                        <input type="text" name="model" class="model">
                     </div>
                     <div class="form-column">
-                        <div class="left">Phone <span class="required">*</span></div>
-                        <input type="tel" name="phone" class="phone">
+                        <div class="left">Fuel <span class="required">*</span></div>
+                        <select name="fuel" class="fuels"></select>
                     </div>
                     <div class="form-column">
-                        <div class="left">Email <span class="required">*</span></div>
-                        <input type="email" name="email" class="email">
+                        <div class="left">Year <span class="required">*</span></div>
+                        <select name="year" class="year">
+                            <?php
+                                $year = date('Y');
+                                for($i=2000; $i<=2065; $i++){
+                                //$selected = ($i==$year)?'selected':'';
+                                echo "
+                                    <option value='".$i."' ".$selected.">".$i."</option>
+                                ";
+                                }
+                            ?>
+                        </select>
                     </div>
                 </div>
                 <div class="form-row flex">
                     <div class="form-column">
-                        <div class="left">Birth Date  <span class="required">*</span></div>
-                        <input type="date" name="birthdate" class="birthdate">
+                        <div class="left">Color  <span class="required">*</span></div>
+                        <input type="text" name="color" class="color">
                     </div>
                     <div class="form-column">
-                        <div class="left">Gender <span class="required">*</span></div>
-                        <select name="gender" class="genders" ></select>
+                        <div class="left">VIN/Serial NUmber <span class="required">*</span></div>
+                        <input type="text" name="vin" class="vin">
                     </div>
                     <div class="form-column">
-                        <div class="left">Department</div>
-                        <select name="department" class="departments"></select>
+                        <div class="left">Registration Number</div>
+                        <input type="text" name="registration" class="registration">
                     </div>
                 </div>
-                <div class="form-row flex">
-                    <div class="form-column">
-                        <div class="left">Country <span class="required">*</span></div>
-                        <select name="country"  class="countries" ></select>
-                    </div>
-                    <div class="form-column">
-                        <div class="left">Region/State <span class="required">*</span></div>
-                        <select name="region" class="regions" ></select>
-                    </div>
-                    <div class="form-column">
-                        <div class="left">City/Town <span class="required">*</span></div>
-                        <select name="city" class="cities"></select>
-                    </div>
-                </div>
-                <div class="form-row flex">
-                    <div class="form-column">
-                        <div class="left">Street</div>
-                        <input type="text" name="street" class="street">
-                    </div>
-                    <div class="form-column">
-                        <div class="left">House/Room Number</div>
-                        <input type="text" name="house" class="house">
-                    </div>
-                    <div class="form-column">
-                        <div class="left">Popular Landmark</div>
-                        <input type="text" name="landmark" class="landmark">
-                    </div>
-                </div>
-                <div class="form-row flex">
-                    <div class="form-column">
-                        <div class="left">Position/Role</div>
-                        <input type="text" name="position" class="position">
-                    </div>
-                    <div class="form-column">
-                        <div class="left">Relationship Status <span class="required">*</span></div>
-                        <select name="relationship" class="relationships" ></select>
-                    </div>
-                    <div class="form-column">
-                        <div class="left">Salary/GH&#8373;</div>
-                        <input type="number" name="salary" class="salary">
-                    </div>
-                </div>
+
                 <input type="hidden" name="edit">
                 <input type="hidden" name="id" class="id">
                 <br>
                 <div>
-                    <button type="submit" class="btn btn-green" id="saveNewAutomobile" ><i class="fa fa-save"></i> Update </button>
+                    <button type="submit" class="btn btn-green"><i class="fa fa-save"></i> Update </button>
                     <button type="reset" class="btn btn-red modalCancel"> <i class="fa fa-times"></i> Cancel </button>
                 </div>
           </form>
@@ -189,7 +154,7 @@
 <!-- View Automobile Modal -->
 <div class="modalWrapper " style="display:none;" id="viewAutomobile">
 <div class="modalOuter"></div>
-        <div class="modalContainer relative" style="background:white;">
+        <div class="modalContainer mediumContainer relative" style="background:white;">
         <span class="modalClose required">
           <i class="fa fa-times"></i>
         </span>
@@ -197,63 +162,43 @@
             <span class="modalTitle">Automobile Profile</h1>
         </div>
         <div class="modalBody"><br>
-            <table style="width: 100%;">
+            <table style="width: 100%;" id="automobileReport">
 					<tbody>
 						<tr>
                             <td rowspan="8" colspan="2">
-                                <img src="../images/profiles/no-profile.jpg" alt="" width="250" class="automobilePhoto">
+                                <img src="../images/autos/no-image.jpg" alt="" width="250" class="automobilePhoto">
                             </td>
-							<td>Username: </td><td class="fg-black username"></td>
-						</tr>
-                        <tr>
-							<td>First Name: </td><td class="fg-black fname"></td>
+							</td><td>Category: </td><td class="fg-black category"></td>
 						</tr>
 						<tr>
-                            <td>Other Name: </td><td class="fg-black oname"></td>
+                            <td>Make: </td><td class="fg-black make"></td>
 						</tr>
 						<tr>
-                            <td>Last Name </td><td class="fg-black lname"></td>
+                            <td>Model </td><td class="fg-black model"></td>
 						</tr>
                         <tr>
-                            <td>Age: </td><td class="fg-black age"></td>
+                            <td>Color: </td><td class="fg-black color"></td>
 						</tr>
                         <tr>  
-                            <td>Phone: </td><td class="fg-black phone"></td>
+                            <td>Fuel: </td><td class="fg-black fuel"></td>
                         </tr>
                         <tr>  
-                            <td>Gender: </td><td class="fg-black gender"></td>
+                            <td>Year: </td><td class="fg-black year"></td>
                         </tr>
                         <tr>
-                            <td>Email: </td><td class="fg-black email"></td>
+                            <td>VIN: </td><td class="fg-black vin"></td>
                         </tr>
                         <tr>
-                            <td>Country: </td><td class="fg-black country"></td>
-                            <td>Region: </td><td class="fg-black region"></td>
+                            <td>Reg. No.: </td><td class="fg-black registration"></td>
                         </tr>
                         <tr>
-                            <td>City: </td><td class="fg-black city"></td>
-                            <td>Street: </td><td class="fg-black street"></td>
-                        </tr>
-                        <tr>
-                            <td>House: </td><td class="fg-black house"></td>
-							<td>Landmark: </td><td class="fg-black landmark"></td>
-						</tr>
-                        <tr>
-                            <td>Department: </td><td class="fg-black department"></td>
-                            <td>Salary: </td><td class="fg-black">GH&#8373; <span class="salary"></span></td>
-                        </tr>
-                        <tr>
-                            <td>Position: </td><td class="fg-black position"></td>
-							<td>Status: </td><td class="fg-black status"></td>
-						</tr>
-                        <tr>
-                            <td>Created: </td><td class="fg-black created"></td>
-                            <td>Last Modified: </td><td class="fg-black modified"></td>
+                            <td>Customer: </td><td class="fg-black customer">
+                            <td></td><td></td>
                         </tr>
 					</tbody>
 				</table><br>
                 <div class="center">
-                    <button class="btn btn-green printAutomobiles"><i class="fa fa-print"></i> Print</button>
+                    <button class="btn btn-green printAutomobile"><i class="fa fa-print"></i> Print</button>
                 </div>
           </div>
         </div>
@@ -274,7 +219,7 @@
                 <div class="">
                     <h3 class="required">Warning!!!</h3>
                     <p>
-                        When you delete this Automobile all data relating to him/her will be lost.<br> Are you sure to continue?
+                        When you delete this Automobile all data relating to it will be lost.<br> Are you sure to continue?
                     </p>
                 </div>
                 <input type="hidden" name="delete">
@@ -290,30 +235,55 @@
     </div>
 </div>
 <!-- Toggle Automobile Active Status Modal -->
-<div class="modalWrapper " style="display:none;" id="toggleAutomobileStatus">
+<div class="modalWrapper " style="display:none;" id="addCustomer">
     <div class="modalOuter"></div>
-        <div class="modalContainer relative" style="background:white;">
+        <div class="modalContainer mediumContainer relative" style="background:white;">
         <span class="modalClose required">
           <i class="fa fa-times"></i>
         </span>
         <div class="modalHead center">
-            <span class="modalTitle"><span class="newStatus"></span> Automobile</h1>
+            <span class="modalTitle">Select Customer</h1>
         </div>
-        <div class="modalBody">
-          <form action="" class="modal-form center" id="toggleAutomobileStatusForm">
-                <div class="">
-                    <p>
-                        You are about to <span class="newStatusColor"><span class="newStatus"></span></span> this automobile.<br> Are you sure to continue?
-                    </p>
-                </div>
-                <input type="hidden" name="id" class="id">
-                <input type="hidden" name="status" class="status">
-                <div>
-                    <button type="submit" class="btn btn-green"><i class="fa fa-check"></i> Yes </button>
-                    <button type="reset" class="btn btn-red modalCancel"> <i class="fa fa-times"></i> No </button>
-                </div>
-          </form>
-          
+        <div class="modalBody"><br>
+          <table id="customersTable">
+                    <thead>
+                        <tr>
+                            <th>Photo</th>
+                            <th>Name</th>
+                            <th>Contact</th>
+                            <th>Select</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php 
+                        try {
+                            $conn = $pdo->open();
+                    
+                                $stmt = $conn->prepare("SELECT *,`c`.`ID` AS `CustomerID`,`u`.`ID` AS `UserID` FROM `customers` `c` 
+                                JOIN `users` `u` ON `u`.`ID` = `c`.`CustomerUserID`");
+                                $stmt->execute();
+
+                                foreach($stmt as $row){    
+                                    echo '
+                                        <tr>
+                                            <td class="center"><img src="../images/profiles/'.((!empty($row["Photo"])?$row["Photo"]:'no-profile.jpg')).'" width="60"></td>
+                                            <td class="left">'.$row["FirstName"].' '.$row["OtherName"].' '.$row["LastName"].'</td>
+                                            <td class="left">'.$row["Email"].'<br>'.$row["Phone"].'</td>
+                                            <td class="center"><button class="customerSelect btn btn-green" data-id="'.$row["CustomerID"].'"> Select</button></td>
+                                        </tr>
+                                    ';
+                                }
+                                $output['type'] = 'success';           
+                    
+                            $pdo->close();
+                        } catch (PDOException $th) {
+                            echo $th->getMessage();
+                        }
+                        ?>
+                    </tbody>
+                </table>
+                <input type="hidden" name="id" class="autoId">
+
         </div>
     </div>
 </div>
@@ -340,25 +310,16 @@
                     }else if(response.type == "info"){
                         notify(response.message,'','info');
                     }else if(response.type == "success"){
-                        $("#viewAutomobile .automobilePhoto").attr("src","../images/Profiles/"+response.photo);                      
-                        $("#viewAutomobile .username").html(response.username);
-                        $("#viewAutomobile .fname").html(response.fname);
-                        $("#viewAutomobile .oname").html(response.oname);
-                        $("#viewAutomobile .lname").html(response.lname);
-                        $("#viewAutomobile .phone").html(response.phone);
-                        $("#viewAutomobile .email").html(response.email);
-                        $("#viewAutomobile .age").html(response.age);
-                        $("#viewAutomobile .gender").html(response.gender);
-                        $('#viewAutomobile .department').html(response.department);
-                        $('#viewAutomobile .country').html(response.country);
-                        $('#viewAutomobile .region').html(response.region);
-                        $('#viewAutomobile .city').html(response.city);
-                        $("#viewAutomobile .street").html(response.street);
-                        $("#viewAutomobile .house").html(response.house);
-                        $("#viewAutomobile .landmark").html(response.landmark);
-                        $("#viewAutomobile .position").html(response.position);
-                        $('#viewAutomobile .relationship').html(response.relationship);
-                        $("#viewAutomobile .salary").html(response.salary);
+                        $("#viewAutomobile .automobilePhoto").attr("src","../images/autos/"+response.photo);                       
+                        $('#viewAutomobile .customer').html(response.customer);
+                        $('#viewAutomobile .category').html(response.category);
+                        $('#viewAutomobile .make').html(response.make);
+                        $("#viewAutomobile .model").html(response.model);
+                        $('#viewAutomobile .fuel').html(response.fuel);
+                        $('#viewAutomobile .year').html(response.year);
+                        $("#viewAutomobile .color").html(response.color);
+                        $("#viewAutomobile .vin").html(response.vin);
+                        $("#viewAutomobile .registration").html(response.registration);
                     }
                 }
             })
@@ -368,30 +329,16 @@
             getCombo();
             $("#addNewAutomobile").fadeIn();
         })
-        /* toggle Automobile Status show */
-        $(".toggleAutomobileStatus").click(function(){
-            $("#toggleAutomobileStatus").fadeIn();
-            var id = $(this).data("id");
-            var status = $(this).data("status");
-            if(status == 1){
-                $(".newStatus").html("Deactivate");
-                $(".newStatusColor").removeClass("fg-forestgreen");
-                $(".newStatusColor").addClass("fg-crimson");
-                $("#toggleAutomobileStatusForm .id").val(id);
-                $("#toggleAutomobileStatusForm .status").val(0);
-            }else{
-                $(".newStatus").html("Activate");
-                $(".newStatusColor").addClass("fg-forestgreen");
-                $(".newStatusColor").removeClass("fg-crimson");
-                $("#toggleAutomobileStatusForm .id").val(id);
-                $("#toggleAutomobileStatusForm .status").val(1);
-            }
+        /* add customer to Automobile show */
+        $(".addCustomer").click(function(){
+            $("#addCustomer").fadeIn();
+            $("#addCustomer .autoId").val($(this).data("id"));
         })
         /* edit Automobile modal show */
         $(".editAutomobile").click(function(){
+            var id = $(this).data("id");
             getCombo();
             $("#editAutomobile").fadeIn();
-            var id = $(this).data("id");
             $.ajax({
                 type: "POST",
                 url: "automobilesFetch.php",
@@ -405,27 +352,17 @@
                     }else if(response.type == "info"){
                         notify(response.message,'','info');
                     }else if(response.type == "success"){
-                        getRegions(response.countryId);
-                        getCities(response.cityId);
                         $("#editAutomobileForm .id").val(response.id);
-                        $("#editAutomobileForm .automobilePhoto").attr("src","../images/Profiles/"+response.photo);                       
-                        $("#editAutomobileForm .fname").val(response.fname);
-                        $("#editAutomobileForm .oname").val(response.oname);
-                        $("#editAutomobileForm .lname").val(response.lname);
-                        $("#editAutomobileForm .phone").val(response.phone);
-                        $("#editAutomobileForm .email").val(response.email);
-                        $("#editAutomobileForm .birthdate").val(response.birthdate);
-                        $('#editAutomobileForm .genders option[value="'+response.genderId+'"]').attr("selected", "selected");
-                        $('#editAutomobileForm .departments option[value="'+response.departmentId+'"]').attr("selected", "selected");
-                        $('#editAutomobileForm .countries option[value="'+response.countryId+'"]').attr("selected", "selected");
-                        $('#editAutomobileForm .regions option[value="'+response.regionId+'"]').attr("selected", "selected");
-                        $('#editAutomobileForm .cities option[value="'+response.cityId+'"]').attr("selected", "selected");
-                        $("#editAutomobileForm .street").val(response.street);
-                        $("#editAutomobileForm .house").val(response.house);
-                        $("#editAutomobileForm .landmark").val(response.landmark);
-                        $("#editAutomobileForm .position").val(response.position);
-                        $('#editAutomobileForm .relationships option[value="'+response.relationshipId+'"]').attr("selected", "selected");
-                        $("#editAutomobileForm .salary").val(response.salary);
+                        $("#editAutomobileForm .automobilePhoto").attr("src","../images/autos/"+response.photo);                       
+                        $('#editAutomobileForm .categories option[value="'+response.categoryId+'"]').attr("selected", "selected");
+                        $('#editAutomobileForm .makes option[value="'+response.makeId+'"]').attr("selected", "selected");
+                        $("#editAutomobileForm .model").val(response.model);
+                        $('#editAutomobileForm .fuels option[value="'+response.fuelId+'"]').attr("selected", "selected");
+                        $('#editAutomobileForm .year option[value="'+response.year+'"]').attr("selected", "selected");
+                        $("#editAutomobileForm .color").val(response.color);
+                        $("#editAutomobileForm .vin").val(response.vin);
+                        $("#editAutomobileForm .registration").val(response.registration);
+                        
                     }
                 }
             })
@@ -477,7 +414,7 @@
         e.preventDefault();
         $.ajax({
             type: "POST",
-			url: "AutomobilesManage.php",
+			url: "automobilesManage.php",
 			data: new FormData(this),
 			mimeType: 'application/json',
 			dataType: 'json',
@@ -492,7 +429,6 @@
                 }else if(response.type == "info"){
                     notify(response.message,'','info');
                 }else if(response.type == "success"){
-                    notify(response.message,'','success');
                     location.reload(true);
                 }
             }
@@ -504,7 +440,7 @@
         var data = $(this).serialize();
         $.ajax({
             type: "POST",
-			url: "AutomobilesManage.php",
+			url: "automobilesManage.php",
 			data: data,
             dataType: 'json',
             success: function(response){
@@ -520,14 +456,15 @@
             }
         })
     })
-    /* Toggle Automobile Status */
-    $("#toggleAutomobileStatusForm").on('submit', function(e){
+    /* Add customer to automobile Automobile */
+    $(".customerSelect").on('click', function(e){
         e.preventDefault();
-        var data = $(this).serialize();
+        var customerId = $(this).data('id');
+        var autoId = $("#addCustomer .autoId").val();
         $.ajax({
             type: "POST",
-			url: "AutomobilesManage.php",
-			data: data,
+			url: "automobilesManage.php",
+			data: {customerId:customerId,autoId:autoId},
             dataType: 'json',
             success: function(response){
                 if (response.type == "error"){
@@ -541,5 +478,8 @@
                 }
             }
         })
+    })
+    $('.printAutomobile').on('click', function(){
+        printContent("#automobileReport");
     })
 </script>

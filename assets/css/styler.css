@@ -31,8 +31,8 @@ body{
 }
 .left{
     text-align: left;
-    justify-content: left;
-    float: left;
+    /* justify-content: left;
+    float: left; */
 }
 .right{
     text-align: right;
@@ -63,7 +63,7 @@ body{
     outline: none;
 }
 .no-border{
-    border: none;
+    border: none !important;
 }
 .no-margin{
     margin: 0 !important;
@@ -390,10 +390,13 @@ body{
     margin: 10rem 1rem;
 }
 .smallContainer{
-    max-width: 40rem;
+    min-width: 40rem !important;
 }
 .mediumContainer{
-    max-width: 50rem;
+    min-width: 60rem !important;
+}
+.largeContainer{
+    min-width: 80% !important;
 }
 .popupClose{
     position: absolute;

@@ -47,10 +47,6 @@
                 $output['type'] = 'error';
                 $output['message'] = 'Please enter numbers ONLY for the salary field';
             }
-            else if(!str_contains($email,"@") && !str_contains($email,".")){
-                $output['type'] = 'error';
-                $output['message'] = 'Please enter a valid email address';
-            }
             else{
                 try {
                     /* fetch employees with the specified phone */

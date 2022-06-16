@@ -3,7 +3,10 @@
 <!-- head -->
 <?php include 'includes/head.php' ?>
 <!-- page name -->
-<?php $thisPage = 'Employees' ?>
+<?php $thisPage = 'Customers' ?>
+
+<!-- Customers Modals -->
+<?php include 'includes/modals/employeeModals.php' ?>
 
 <div class="layout-wrapper">
     <!-- aside -->
@@ -17,17 +20,17 @@
             <div class="box main">
                 <div class="table-custom-top flex align-center space-between">
                     <span class="box-header no-margin">
-                        <span class="box-header-dot"></span> Employees Report
+                        <span class="box-header-dot"></span> Customers Report
                     </span>
                     <span>
-                        <a href="employees.php" class="btn btn-theme-outline"><i class="fa fa-arrow-left"></i> Back</a>
-                        <button class="btn btn-green printEmployees"><i class="fa fa-print"></i> Print</button>
+                        <a href="customers.php" class="btn btn-theme-outline"><i class="fa fa-arrow-left"></i> Back</a>
+                        <button class="btn btn-green printCustomers"><i class="fa fa-print"></i> Print</button>
                     </span>
                 </div>
-                <div class="print-wraper tableResponsive" id="employeesReport">
+                <div class="print-wraper tableResponsive" id="customersReport">
                     <div class="center">
                         <div class="bold">HTU-JMTC</div>
-                        <div >List of Employees</div>
+                        <div >List of Customers</div>
                     </div><br>
                     <table >
                         <thead>
@@ -35,7 +38,6 @@
                                 <th>ID</th>
                                 <th>Photo</th>
                                 <th>Name</th>
-                                <th>Dep. & Role</th>
                                 <th>Contact</th>
                                 <th>Address</th>
                                 <th>Status</th>
@@ -46,9 +48,8 @@
                             try {
                                 $conn = $pdo->open();
                         
-                                    $stmt = $conn->prepare("SELECT *,`e`.`ID` AS `EmployeeID`, `u`.`ID` AS `UserID` FROM `employees` `e` 
-                                    JOIN `users` `u` ON `u`.`ID` = `e`.`EmployeeUserID` 
-                                    JOIN `departments` `d` ON `d`.`ID` = `e`.`DepartmentID`
+                                    $stmt = $conn->prepare("SELECT *,`cu`.`ID` AS `CustomerID`, `u`.`ID` AS `UserID` FROM `customers` `cu` 
+                                    JOIN `users` `u` ON `u`.`ID` = `cu`.`CustomerUserID` 
                                     JOIN `addresses` `a` ON `a`.`ID` = `u`.`AddressID`
                                     JOIN `countries` `c` ON `c`.`ID` = `a`.`CountryID`
                                     JOIN `regions` `r` ON `r`.`ID` = `a`.`RegionID`
@@ -58,10 +59,9 @@
                                     foreach($stmt as $row){
                                         echo '
                                             <tr>
-                                                <td class="center">'.$row["EmployeeID"].'</td>
+                                                <td class="center">'.$row["CustomerID"].'</td>
                                                 <td class="center"><img src="../images/profiles/'.((!empty($row["Photo"])?$row["Photo"]:'no-profile.jpg')).'" width="60"></td>
                                                 <td>'.$row["FirstName"].' '.$row["OtherName"].' '.$row["LastName"].'</td>
-                                                <td>'.$row["Department"].'<br>'.$row["Position"].'</td>
                                                 <td>'.$row["Email"].'<br>'.$row["Phone"].'</td>
                                                 <td>
                                                     '.
@@ -90,13 +90,27 @@
         </div>
     </main>
 </div>
-
+<noscript>
+    <style>
+        .center{
+            text-align:center;
+        }
+        table{
+            border-collapse:collapse;
+            width: 100%
+        }
+        table tr,table td,table th{
+            border:1px solid gray;
+        }
+    </style>
+</noscript>
 <!-- scripts -->
 <?php include 'includes/scripts.php' ?>
 <script>
-    $('.printEmployees').on('click', function(){
-        printContent("#employeesReport");
+    $('.printCustomers').on('click', function(){
+        printContent("#customersReport");
     })
+    
 </script>
 <!-- foot -->
 <?php include 'includes/foot.php' ?>

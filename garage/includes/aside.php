@@ -13,6 +13,18 @@
                 <span>Jobs</span>
             </a>
         </li>
+        <li class="<?php echo (!empty($thisPage) && $thisPage == 'Inventory') ? 'menu-active' : '' ?>">
+            <a href="inventory.php">
+                <i class=" fa fa-list"></i>
+                <span>Inventory</span>
+            </a>
+        </li>
+        <li class="<?php echo (!empty($thisPage) && $thisPage == 'Invoice') ? 'menu-active' : '' ?>">
+            <a href="invoice.php">
+                <i class=" fa fa-file"></i>
+                <span>Invoice</span>
+            </a>
+        </li>
         <li class="<?php echo (!empty($thisPage) && $thisPage == 'Testimonials') ? 'menu-active' : '' ?>">
             <a href="testimonials.php">
                 <i class=" fa fa-message"></i>
@@ -47,6 +59,12 @@
             <a href="departments.php">
                 <i class=" fa fa-list"></i>
                 <span>Departments</span>
+            </a>
+        </li>
+        <li class="<?php echo (!empty($thisPage) && $thisPage == 'Suppliers') ? 'menu-active' : '' ?>">
+            <a href="suppliers.php">
+                <i class=" fa fa-list"></i>
+                <span>Suppliers</span>
             </a>
         </li>
         <li class="<?php echo (!empty($thisPage) && $thisPage == 'Settings') ? 'menu-active' : '' ?>">

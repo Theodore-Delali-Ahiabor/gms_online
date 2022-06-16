@@ -3,10 +3,7 @@
 <!-- head -->
 <?php include 'includes/head.php' ?>
 <!-- page name -->
-<?php $thisPage = 'Customers' ?>
-
-<!-- Customers Modals -->
-<?php include 'includes/modals/customerModals.php' ?>
+<?php $thisPage = 'Invoice' ?>
 
 <div class="layout-wrapper">
     <!-- aside -->
@@ -77,7 +74,6 @@
                                             <td>
                                                 <div class="center flex">
                                                     <button class="btn btn-blue viewCustomer" data-id="'.$row["CustomerID"].'"><i class="fa fa-eye"></i></button>
-                                                    <button class="btn btn-green editCustomer" data-id="'.$row["CustomerID"].'"><i class="fa fa-pen"></i></button>
                                                     <button class="btn btn-red deleteCustomer" data-id="'.$row["CustomerID"].'"><i class="fa fa-trash"></i></button>
                                                 </div>
                                             </td>

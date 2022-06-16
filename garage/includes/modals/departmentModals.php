@@ -17,7 +17,7 @@
                     <input type="hidden" name="add">
                 <br><br>
                 <div>
-                    <button type="submit" class="btn btn-green" id="saveNewDepartment" ><i class="fa fa-save"></i> Save </button>
+                    <button type="submit" class="btn btn-green"><i class="fa fa-save"></i> Save </button>
                     <button type="reset" class="btn btn-red modalCancel"> <i class="fa fa-times"></i> Cancel </button>
                 </div>
           </form>

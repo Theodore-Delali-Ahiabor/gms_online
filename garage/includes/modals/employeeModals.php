@@ -1,7 +1,7 @@
 <!-- Add New Employee Modal -->
 <div class="modalWrapper " style="display:none;" id="addNewEmployee">
     <div class="modalOuter"></div>
-    <div class="modalContainer relative" style="background:white;">
+    <div class="modalContainer largeContainer relative" style="background:white;">
         <span class="modalClose required">
           <i class="fa fa-times"></i>
         </span>
@@ -98,7 +98,7 @@
                 <input type="hidden" name="add">
                 <br>
                 <div>
-                    <button type="submit" class="btn btn-green" id="saveNewEmployee" ><i class="fa fa-save"></i> Save </button>
+                    <button type="submit" class="btn btn-green"><i class="fa fa-save"></i> Save </button>
                     <button type="reset" class="btn btn-red modalCancel"> <i class="fa fa-times"></i> Cancel </button>
                 </div>
           </form>
@@ -108,7 +108,7 @@
 <!-- Edit Employee Modal -->
 <div class="modalWrapper " style="display:none;" id="editEmployee">
 <div class="modalOuter"></div>
-    <div class="modalContainer relative" style="background:white;">
+    <div class="modalContainer largeContainer relative" style="background:white;">
         <span class="modalClose required">
           <i class="fa fa-times"></i>
         </span>
@@ -206,7 +206,7 @@
                 <input type="hidden" name="id" class="id">
                 <br>
                 <div>
-                    <button type="submit" class="btn btn-green" id="saveNewEmployee" ><i class="fa fa-save"></i> Update </button>
+                    <button type="submit" class="btn btn-green"><i class="fa fa-save"></i> Update </button>
                     <button type="reset" class="btn btn-red modalCancel"> <i class="fa fa-times"></i> Cancel </button>
                 </div>
           </form>
@@ -216,7 +216,7 @@
 <!-- View Employee Modal -->
 <div class="modalWrapper " style="display:none;" id="viewEmployee">
 <div class="modalOuter"></div>
-        <div class="modalContainer relative" style="background:white;">
+        <div class="modalContainer mediumContainer relative" style="background:white;">
         <span class="modalClose required">
           <i class="fa fa-times"></i>
         </span>
@@ -224,7 +224,7 @@
             <span class="modalTitle">Employee Profile</h1>
         </div>
         <div class="modalBody"><br>
-            <table style="width: 100%;">
+            <table style="width: 100%;" id="employeeReport">
 					<tbody>
 						<tr>
                             <td rowspan="8" colspan="2">
@@ -280,7 +280,7 @@
 					</tbody>
 				</table><br>
                 <div class="center">
-                    <button class="btn btn-green printEmployees"><i class="fa fa-print"></i> Print</button>
+                    <button class="btn btn-green printEmployee"><i class="fa fa-print"></i> Print</button>
                 </div>
           </div>
         </div>
@@ -569,4 +569,9 @@
             }
         })
     })
+    $('.printEmployee').on('click', function(){
+        printContent("#employeeReport");
+    })
+    
+</script>
 </script>
