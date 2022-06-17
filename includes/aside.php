@@ -20,6 +20,12 @@
                 <span>Appointments</span>
             </a>
         </li>
+        <li uclass="<?php echo (!empty($thisPage) && $thisPage == 'Automobiles') ? 'menu-active' : '' ?>">
+            <a href="">
+                <i class=" fa fa-car"></i>
+                <span>Automobiles</span>
+            </a>
+        </li>
         <?php }?>
         <li class="<?php echo (!empty($thisPage) && $thisPage == 'Testimonials') ? 'menu-active' : '' ?>">
             <a href="testimonials.php">

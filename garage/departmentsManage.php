@@ -70,7 +70,6 @@
                 $stmt = $conn->prepare("DELETE FROM `departments` WHERE `id` = :id");
                 $stmt->execute(['id'=> $id]);
                 $output['type'] = 'success';
-                $output['message'] =$id;
 
             } catch (PDOException $th) {
                 $output['type'] = 'warning';

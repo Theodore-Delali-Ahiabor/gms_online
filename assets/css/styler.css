@@ -503,6 +503,7 @@ body{
 }
 .form-columnx2{
     width: 66%;
+    height: 4rem;
     padding: 0 1rem;
 }
 .form-column_half{
@@ -532,6 +533,15 @@ body{
     border: .1rem solid #d6e0e8;
     left: 10rem;
     background: #fff;
+}
+.form-column div button{
+    position: absolute;
+    right: 0;
+    top: .5rem;
+    border-radius: 0 .5rem .5rem 0;
+    padding: .3rem 1rem;
+    margin: 0;
+    font-size: 2.5rem;
 }
 .modalTitle {
     font-size: 2rem;

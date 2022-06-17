@@ -223,7 +223,79 @@
         </div>
     </div>
 </div>
+<!-- Add Supplier to Iventory Item Modal -->
+<div class="modalWrapper " style="display:none;" id="addSupplier">
+    <div class="modalOuter"></div>
+        <div class="modalContainer largeContainer relative" style="background:white;">
+        <span class="modalClose required">
+          <i class="fa fa-times"></i>
+        </span>
+        <div class="modalHead center">
+            <span class="modalTitle">Select Supplier</h1>
+        </div>
+        <div class="modalBody"><br>
+            <table id="suppliersTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Brand Name</th>
+                        <th>Bussines Sector</th>
+                        <th>Address</th>
+                        <th>Contact</th>
+                        <th>Select</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php 
+                    try {
+                        $conn = $pdo->open();
+                
+                            $stmt = $conn->prepare("SELECT *,`s`.`ID` AS `SupplierID` FROM `suppliers` `s`
+                            JOIN `sectors` `se` ON `s`.`SectorID` = `se`.`ID`");
+                            $stmt->execute();
+                            
+                            foreach($stmt as $row){
+                                $address = '';
+                                if(!empty($row['AddressID'])){
+                                    $stmtAddress = $conn->prepare("SELECT * FROM `addresses` `a` 
+                                    JOIN `suppliers` `s` ON `s`.`AddressID` = `a`.`ID`
+                                    JOIN `countries` `c` ON `c`.`ID` = `a`.`CountryID`
+                                    JOIN `regions` `r` ON `r`.`ID` = `a`.`RegionID`
+                                    JOIN `cities` `ci` ON `ci`.`ID` = `a`.`CityID` 
+                                    WHERE `s`.`AddressID` = :id");
+                                    $stmtAddress->execute(['id'=>$row['AddressID']]);
+                                    $rowAddress = $stmtAddress->fetch();
+                                    $address = $rowAddress["Country"].', '.$rowAddress["Region"].', '.$rowAddress["City"].'<br>'.
+                                    $rowAddress["Street"].', '.$rowAddress["House"].', '.$rowAddress["Landmark"].'<br>';    
+                                }
+                                echo '
+                                    <tr>
+                                        <td class="center">'.$row["SupplierID"].'</td>
+                                        <td>'.$row["Name"].'</td>
+                                        <td>'.$row['Sector'].'</td>
+                                        <td>'.$address.'</td>
+                                        <td>'.$row['Phone'].'<br>'.$row['Email'].'</td>
+                                        <td class="center">
+                                            <button class="supplierSelect btn btn-green" data-id="'.$row["SupplierID"].'"> Select</button>
+                                        </td>
+                                    </tr>
+                                ';
+                            }
+                            $output['type'] = 'success';           
+                
+                        $pdo->close();
+                    } catch (PDOException $th) {
+                        echo $th->getMessage();
+                    }
+                    ?>
+                </tbody>
+            
+            </table>
+            <input type="hidden" name="id" class="itemId">
 
+        </div>
+    </div>
+</div>
 <script>
     $(function(){
         /* select a photo file */
@@ -257,6 +329,7 @@
                         $("#viewInventory .stock").html(response.stock);
                         $("#viewInventory .make").html(response.make);
                         $('#viewInventory .cost').html(response.cost);
+                        $('#viewInventory .supplier').html(response.supplier);
                     }
                 }
             })
@@ -266,7 +339,11 @@
             getCombo();
             $("#addNewInventory").fadeIn();
         })
-        
+        /* add supplier to Automobile show */
+        $(".addSupplier").click(function(){
+            $("#addSupplier").fadeIn();
+            $("#addSupplier .itemId").val($(this).data("id"));
+        })
         /* edit Inventory modal show */
         $(".editInventory").click(function(){
             getCombo();
@@ -354,6 +431,29 @@
             contentType: false,
             cache: false,
             processData: false,
+            success: function(response){
+                if (response.type == "error"){
+                    notify(response.message,'','error');
+                }else if(response.type == "warning"){
+                    notify(response.message,'','warning');
+                }else if(response.type == "info"){
+                    notify(response.message,'','info');
+                }else if(response.type == "success"){
+                    location.reload(true);
+                }
+            }
+        })
+    })
+    /* Add supplier to Inventory item */
+    $(".supplierSelect").on('click', function(e){
+        e.preventDefault();
+        var supplierId = $(this).data('id');
+        var itemId = $("#addSupplier .itemId").val();
+        $.ajax({
+            type: "POST",
+			url: "inventoryManage.php",
+			data: {supplierId:supplierId,itemId:itemId},
+            dataType: 'json',
             success: function(response){
                 if (response.type == "error"){
                     notify(response.message,'','error');

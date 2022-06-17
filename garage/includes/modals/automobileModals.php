@@ -234,7 +234,7 @@
         </div>
     </div>
 </div>
-<!-- Toggle Automobile Active Status Modal -->
+<!-- Add customer to Automobile Modal -->
 <div class="modalWrapper " style="display:none;" id="addCustomer">
     <div class="modalOuter"></div>
         <div class="modalContainer mediumContainer relative" style="background:white;">
@@ -269,7 +269,9 @@
                                             <td class="center"><img src="../images/profiles/'.((!empty($row["Photo"])?$row["Photo"]:'no-profile.jpg')).'" width="60"></td>
                                             <td class="left">'.$row["FirstName"].' '.$row["OtherName"].' '.$row["LastName"].'</td>
                                             <td class="left">'.$row["Email"].'<br>'.$row["Phone"].'</td>
-                                            <td class="center"><button class="customerSelect btn btn-green" data-id="'.$row["CustomerID"].'"> Select</button></td>
+                                            <td class="center">
+                                                <button class="customerSelect btn btn-green" data-id="'.$row["CustomerID"].'"> Select</button>
+                                            </td>
                                         </tr>
                                     ';
                                 }

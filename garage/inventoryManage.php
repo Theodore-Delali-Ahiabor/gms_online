@@ -117,13 +117,13 @@
         }
 
         /* add Supplier */
-        else if(isset($_POST['autoId']) && isset($_POST['customerId'])){
+        else if(isset($_POST['supplierId']) && isset($_POST['itemId'])){
             try {
-                $customerId = htmlentities($_POST['customerId']);
-                $autoId = htmlentities($_POST['autoId']);
+                $supplierId = htmlentities($_POST['supplierId']);
+                $itemId = htmlentities($_POST['itemId']);
 
-                $stmt = $conn->prepare("UPDATE `inventorys` SET `Customer` = :customerId WHERE `ID` = :autoId");
-                $stmt->execute(['customerId'=>$customerId, 'autoId'=> $autoId]);
+                $stmt = $conn->prepare("UPDATE `inventory` SET `SupplierID` = :supplierId WHERE `ID` = :itemId");
+                $stmt->execute(['supplierId'=>$supplierId, 'itemId'=> $itemId]);
                 $output['type'] = 'success';
 
             } catch (PDOException $th) {

@@ -15,6 +15,8 @@
         $output['makes'] = '<option value="0">--Select--</option>';
         $output['locations'] = '<option value="0">--Select--</option>';
         $output['sectors'] = '<option value="0">--Select--</option>';
+        $output['types'] = '<option value="0">--Select--</option>';
+        $output['statuses'] = '<option value="0">--Select--</option>';
 
          /* fetch Countries */
         $stmtCountries = $conn->prepare("SELECT * FROM `countries` ORDER BY `Country`");
@@ -88,7 +90,18 @@
         foreach ($stmtSector as $rowSector) {
             $output['sectors'] .=  "<option value='".$rowSector['ID']."'>".$rowSector['Sector']."</option>";
         }
-
+        /* Status */
+        $stmtSector = $conn->prepare("SELECT * FROM `status` ORDER BY `Status`");
+        $stmtSector->execute();
+        foreach ($stmtSector as $rowSector) {
+            $output['statuses'] .=  "<option value='".$rowSector['ID']."'>".$rowSector['Status']."</option>";
+        }
+        /* Types */
+        $stmtSector = $conn->prepare("SELECT * FROM `types` ORDER BY `Type`");
+        $stmtSector->execute();
+        foreach ($stmtSector as $rowSector) {
+            $output['types'] .=  "<option value='".$rowSector['ID']."'>".$rowSector['Type']."</option>";
+        }
         $output['type'] = 'success';
         $pdo->close();
     }

@@ -292,8 +292,7 @@
                         notify(response.message,'','warning');
                     }else if(response.type == "info"){
                         notify(response.message,'','info');
-                    }else if(response.type == "success"){
-                        $("#viewSupplier .supplierPhoto").attr("src","../images/Profiles/"+response.photo);                      
+                    }else if(response.type == "success"){                   
                         $("#viewSupplier .username").html(response.username);
                         $("#viewSupplier .fname").html(response.fname);
                         $("#viewSupplier .oname").html(response.oname);
@@ -309,9 +308,6 @@
                         $("#viewSupplier .street").html(response.street);
                         $("#viewSupplier .house").html(response.house);
                         $("#viewSupplier .landmark").html(response.landmark);
-                        $("#viewSupplier .position").html(response.position);
-                        $('#viewSupplier .relationship').html(response.relationship);
-                        $("#viewSupplier .salary").html(response.salary);
                     }
                 }
             })
@@ -341,25 +337,18 @@
                     }else if(response.type == "success"){
                         getRegions(response.countryId);
                         getCities(response.cityId);
-                        $("#editSupplierForm .id").val(response.id);
-                        $("#editSupplierForm .supplierPhoto").attr("src","../images/Profiles/"+response.photo);                       
-                        $("#editSupplierForm .fname").val(response.fname);
-                        $("#editSupplierForm .oname").val(response.oname);
-                        $("#editSupplierForm .lname").val(response.lname);
+                        $("#editSupplierForm .id").val(response.id);                      
+                        $("#editSupplierForm .name").val(response.name);
+                        $('#editSupplierForm .sectors option[value="'+response.sectorId+'"]').attr("selected", "selected");
                         $("#editSupplierForm .phone").val(response.phone);
                         $("#editSupplierForm .email").val(response.email);
-                        $("#editSupplierForm .birthdate").val(response.birthdate);
-                        $('#editSupplierForm .genders option[value="'+response.genderId+'"]').attr("selected", "selected");
-                        $('#editSupplierForm .departments option[value="'+response.departmentId+'"]').attr("selected", "selected");
+                        $("#editSupplierForm .box").val(response.box);
                         $('#editSupplierForm .countries option[value="'+response.countryId+'"]').attr("selected", "selected");
                         $('#editSupplierForm .regions option[value="'+response.regionId+'"]').attr("selected", "selected");
                         $('#editSupplierForm .cities option[value="'+response.cityId+'"]').attr("selected", "selected");
                         $("#editSupplierForm .street").val(response.street);
                         $("#editSupplierForm .house").val(response.house);
                         $("#editSupplierForm .landmark").val(response.landmark);
-                        $("#editSupplierForm .position").val(response.position);
-                        $('#editSupplierForm .relationships option[value="'+response.relationshipId+'"]').attr("selected", "selected");
-                        $("#editSupplierForm .salary").val(response.salary);
                     }
                 }
             })
@@ -426,7 +415,6 @@
                 }else if(response.type == "info"){
                     notify(response.message,'','info');
                 }else if(response.type == "success"){
-                    notify(response.message,'','success');
                     location.reload(true);
                 }
             }

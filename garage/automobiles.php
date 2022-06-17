@@ -5,7 +5,7 @@
 <!-- page name -->
 <?php $thisPage = 'Automobiles' ?>
 
-<!-- Employees Modals -->
+<!-- Automobile Modals -->
 <?php include 'includes/modals/automobileModals.php' ?>
 
 <div class="layout-wrapper">

@@ -85,33 +85,17 @@
                             $stmtSupplier->execute(['id'=>$id]);
                             $rowSupplier = $stmtSupplier->fetch();
 
-                            if(empty($rowSupplier['AddressID'])){
-                                /*  */
-                                $stmt = $conn->prepare("INSERT INTO `addresses`(`CountryID`, `RegionID`, `CityID`, `Street`, `House`, `Landmark`) 
-                                VALUES (:country,:region,:city,:street,:house,:landmark)");
-                                $stmt->execute(['country'=>$country,'region'=>$region,'city'=>$city,'street'=>$street,'house'=>$house,'landmark'=>$landmark]);
-                                $address = $conn->lastInsertId();
-
-                                /* update suppliers table */
-                                $stmt = $conn->prepare("UPDATE `users` SET `Photo`=:photo, `FirstName`=:fname, `OtherName`=:oname, `LastName`=:lname, `Phone`=:phone, `Email`=:email, `BirthDate`=:birthdate, `GenderID`=:gender , `AddressID`=:address, `LastModified`=:now
-                                WHERE `ID`=:id");
-                                $stmt->execute(['photo'=>$photo,'fname'=>$fname,'oname'=>$oname,'lname'=>$lname,'phone'=>$phone,'email'=>$email,'birthdate'=>$birthdate,'gender'=>$gender, 'address'=>$address,'id'=>$rowSupplier['SupplierUserID'],'now'=>$now]);
-                                
-                            }else{
-                                /* update address table */
-                                $stmt = $conn->prepare("UPDATE `addresses` SET `CountryID`=:country, `RegionID`=:region, `CityID`=:city, `Street`=:street, `House`=:house, `Landmark`=:landmark 
-                                WHERE `ID`=:id");
-                                $stmt->execute(['country'=>$country,'region'=>$region,'city'=>$city,'street'=>$street,'house'=>$house,'landmark'=>$landmark,'id'=>$rowSupplier['AddressID']]);
-                               
-                                /* update suppliers table */
-                                $stmt = $conn->prepare("UPDATE `users` SET `Photo`=:photo, `FirstName`=:fname, `OtherName`=:oname, `LastName`=:lname, `Phone`=:phone, `Email`=:email, `BirthDate`=:birthdate, `GenderID`=:gender ,`LastModified`=:now
-                                WHERE `ID`=:id");
-                                $stmt->execute(['photo'=>$photo,'fname'=>$fname,'oname'=>$oname,'lname'=>$lname,'phone'=>$phone,'email'=>$email,'birthdate'=>$birthdate,'gender'=>$gender,'id'=>$rowSupplier['SupplierUserID'],'now'=>$now]);
+                            /* update address table */
+                            $stmt = $conn->prepare("UPDATE `addresses` SET `CountryID`=:country, `RegionID`=:region, `CityID`=:city, `Street`=:street, `House`=:house, `Landmark`=:landmark 
+                            WHERE `ID`=:id");
+                            $stmt->execute(['country'=>$country,'region'=>$region,'city'=>$city,'street'=>$street,'house'=>$house,'landmark'=>$landmark,'id'=>$rowSupplier['AddressID']]);
                             
-                            }
-                            
+                            /* update suppliers table */
+                            $stmt = $conn->prepare("UPDATE `suppliers` SET `Name`=:name,`SectorID`=:sector,`Phone`=:phone,`Email`=:email,`Box`=:box 
+                            WHERE `ID` =:id");
+                            $stmt->execute(['name'=>$name,'sector'=>$sector,'phone'=>$phone,'email'=>$email,'box'=>$box,'id'=>$id]);
+                                                        
                             $output['type'] = 'success';
-                            $output['message'] = 'Supplier Edited successfully';
                         }
                         
                     }
@@ -130,23 +114,6 @@
             try {
                 $stmt = $conn->prepare("DELETE FROM `suppliers` WHERE `ID` = :id");
                 $stmt->execute(['id'=> $id]);
-                $output['type'] = 'info';
-                $output['message'] = $id;
-
-            } catch (PDOException $th) {
-                $output['type'] = 'warning';
-                $output['message'] = $th->getMessage();
-            }
-        }
-
-        /* Update supplier status */
-        else if (isset($_POST['status'])){
-            $id = $_POST['id'];
-            $status = $_POST['status'];
-
-            try {
-                $stmt = $conn->prepare("UPDATE `users` SET `Status` = :status WHERE `ID` = :id");
-                $stmt->execute(['id'=> $id, 'status'=>$status]);
                 $output['type'] = 'success';
 
             } catch (PDOException $th) {

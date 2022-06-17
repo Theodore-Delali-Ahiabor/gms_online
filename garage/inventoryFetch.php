@@ -13,16 +13,16 @@
         $stmt->execute(['id'=>$id]);
         
         foreach($stmt as $row){
-            /* if(!empty($row['InventoryID'])){
-                $stmtC = $conn->prepare("SELECT * FROM `inventorys` `c`
-                JOIN `users` `u` ON `c`.`InventoryUserID` = `u`.`ID`
-                WHERE `c`.`ID`=:id");
-                $stmtC->execute(['id'=>$row['InventoryID']]);
+            if(!empty($row['SupplierID'])){
+                $stmtC = $conn->prepare("SELECT *,`s`.`ID` AS `SupplierID` FROM `suppliers` `s`
+                JOIN `sectors` `se` ON `s`.`SectorID` = `se`.`ID`
+                WHERE `s`.`ID` = :id");
+                $stmtC->execute(['id'=>$row['SupplierID']]);
                 $rowC = $stmtC->fetch();
-                $supplier = $rowC['FirstName'].' '.$rowC['OtherName'].' '.$rowC['LastName'].'<br>'.$rowC['Phone'].'<br>'.$rowC['Email'];
+                $supplier = $rowC['Name'].'<br>'.$rowC['Phone'].'<br>'.$rowC['Email'];
             }else{
                 $supplier = '';
-            } */
+            }
             
             $output['id'] = $row['InventoryID'];
             $output['photo'] = !empty($row['Photo'])?$row['Photo']:'no-image.jpg';
@@ -37,7 +37,7 @@
             $output['cost'] = $row['UnitCost'];
             $output['makeId'] = $row['MakeID'];
             $output['make'] = $row['Make'];
-            //$output['supplier'] = $supplier;
+            $output['supplier'] = $supplier;
             
             $output['type'] = 'success';
         }

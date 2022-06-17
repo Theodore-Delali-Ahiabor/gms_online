@@ -55,6 +55,8 @@
         $("#automobilesTable").DataTable();
         $("#inventoryTable").DataTable();
         $("#suppliersTable").DataTable();
+        $("#jobsTable").DataTable();
+        $("#requestsTable").DataTable();
 
         /* fetch Regions */
         $(".countries").on("change", function(){
@@ -127,6 +129,8 @@
                     $(".fuels").html(response.fuels);
                     $(".locations").html(response.locations);
                     $(".sectors").html(response.sectors);
+                    $(".statuses").html(response.statuses);
+                    $(".types").html(response.types);
                 }
             }
         });
