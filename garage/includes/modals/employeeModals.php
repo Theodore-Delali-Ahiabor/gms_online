@@ -386,6 +386,9 @@
                         $("#viewEmployee .position").html(response.position);
                         $('#viewEmployee .relationship').html(response.relationship);
                         $("#viewEmployee .salary").html(response.salary);
+                        $("#viewEmployee .status").html(response.status);
+                        $("#viewEmployee .created").html(response.dateCreated);
+                        $("#viewEmployee .modified").html(response.lastModified);
                     }
                 }
             })
@@ -432,8 +435,6 @@
                     }else if(response.type == "info"){
                         notify(response.message,'','info');
                     }else if(response.type == "success"){
-                        getRegions(response.countryId);
-                        getCities(response.cityId);
                         $("#editEmployeeForm .id").val(response.id);
                         $("#editEmployeeForm .employeePhoto").attr("src","../images/Profiles/"+response.photo);                       
                         $("#editEmployeeForm .fname").val(response.fname);
@@ -519,7 +520,6 @@
                 }else if(response.type == "info"){
                     notify(response.message,'','info');
                 }else if(response.type == "success"){
-                    notify(response.message,'','success');
                     location.reload(true);
                 }
             }

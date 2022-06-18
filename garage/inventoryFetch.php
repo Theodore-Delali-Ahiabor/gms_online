@@ -19,7 +19,7 @@
                 WHERE `s`.`ID` = :id");
                 $stmtC->execute(['id'=>$row['SupplierID']]);
                 $rowC = $stmtC->fetch();
-                $supplier = $rowC['Name'].'<br>'.$rowC['Phone'].'<br>'.$rowC['Email'];
+                $supplier = !empty($rowC['Name']).'<br>'.!empty($rowC['Phone']).'<br>'.!empty($rowC['Email']);
             }else{
                 $supplier = '';
             }

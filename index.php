@@ -136,35 +136,18 @@
                             </div>
                         </div>
                         <div class="form-column">
-                            <div class="left">Date In <span class="required">*</span></div>
+                            <div class="left">Start Date <span class="required">*</span></div>
                             <input type="date" name="in" id="in">
                         </div>
                         <div class="form-column">
-                            <div class="left">Date Due Out <span class="required">*</span></div>
+                            <div class="left">End Date <span class="required">*</span></div>
                             <input type="date" name="out" class="out">
                         </div>
                     </div>
                     <div class="form-row flex">
-                        <div class="form-column ">
-                            <div class="left">Mileage <span class="required">*</span></div>
-                            <input type="number" name="name" class="name" >
-                        </div>
                         <div class="form-column">
                             <div class="left">Service Type <span class="required">*</span></div>
                             <select name="type"  class="types" ></select>
-                        </div>
-                        <div class="form-column">
-                        <div class="left">Status <span class="required">*</span></div>
-                            <select name="status"  class="statuses" ></select>
-                        </div>
-                    </div>
-                    <div class="form-row flex">
-                        <div class="form-column">
-                            <div class="left">Lead Technician <span class="required">*</span></div>
-                            <div class="relative">
-                                <input type="text" name="employee" class="employee" disabled>
-                                <button class="btn btn-theme no-border absolute"><i class="fa fa-plus"></i></button>
-                            </div>
                         </div>
                         <div class="form-columnx2 ">
                             <div class="left">Compliants <span class="required">*</span></div>
@@ -174,7 +157,7 @@
                     <input type="hidden" name="add">
                     <br>
                     <div>
-                        <button type="submit" class="btn btn-green"><i class="fa fa-save"></i> Save </button>
+                        <button type="submit" class="btn btn-green"><i class="fa fa-paper-plane"></i>  Send Request</button>
                         <button type="reset" class="btn btn-red modalCancel"> <i class="fa fa-times"></i> Cancel </button>
                     </div>
                 </form>

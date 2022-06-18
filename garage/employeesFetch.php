@@ -11,6 +11,7 @@
             $stmt = $conn->prepare("SELECT *,`e`.`ID` AS `EmployeeID`, `u`.`ID` AS `UserID` FROM `employees` `e` 
             JOIN `users` `u` ON `u`.`ID` = `e`.`EmployeeUserID` 
             JOIN `departments` `d` ON `d`.`ID` = `e`.`DepartmentID`
+            JOIN `relationships` `re` ON `re`.`ID` = `e`.`RelationshipID`
             JOIN `addresses` `a` ON `a`.`ID` = `u`.`AddressID`
             JOIN `countries` `c` ON `c`.`ID` = `a`.`CountryID`
             JOIN `regions` `r` ON `r`.`ID` = `a`.`RegionID`
@@ -43,8 +44,11 @@
             $output['landmark'] = $row['Landmark'];
             $output['position'] = $row['Position'];
             $output['relationshipId'] = $row['RelationshipID'];
-            //$output['relationship'] = $row['Relationship'];
+            $output['relationship'] = $row['Relationship'];
             $output['salary'] = $row['Salary'];
+            $output['status'] = ($row['Status']==1)?"Active":"Inactive";
+            $output['dateCreated'] = $row['DateCreated'];
+            $output['lastModified'] = $row['LastModified'];
             $output['type'] = 'success';  
 
         }

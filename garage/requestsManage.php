@@ -15,24 +15,28 @@
             $status = htmlentities($_POST['status']);
             $technician = htmlentities($_POST['technician']);
             $complians = htmlentities($_POST['complians']);
+            $pickup = htmlentities($_POST['pickup']);
             $null = null;
             $now = date("Y-m-d h:i:s");
 
             /* add new request */
             if(isset($_POST['add'])){      
                 /* Check if empty */
-                if(empty($name) || empty($serial) || empty($location) || empty($shelve) || empty($make) || empty($cost) || empty($stock)){
+                if(empty($auto) || empty($in) || empty($out) || empty($type) || $type==0 || $status==0 || empty($status) || empty($technician)){
                     $output['type'] = 'error';
                     $output['message'] = 'Please fill all required (*) fields';
-                }else if(!is_numeric($cost)){
+                }else if(!is_numeric($mileage)){
                     $output['type'] = 'error';
-                    $output['message'] = 'Please enter a valid unit cost';
+                    $output['message'] = 'Please enter a valid mileage';
+                }else if($type == 1 && empty($pickup)){
+                    $output['type'] = 'error';
+                    $output['message'] = 'Please enter a Pick Up address';
                 }
                 else{
                     try {
-                        $stmt = $conn->prepare("INSERT INTO `requests`(`AutomobileID`, `EmployeeID`, `DateIn`, `DateDueOut`, `Mileage`, `Compliant`, `Status`) 
-                        VALUES ('[value-2]','[value-3]','[value-4]','[value-5]','[value-6]','[value-7]','[value-8]'");
-                        $stmt->execute(['auto'=>$auto ,'in'=>$in ,'out'=>$out ,'mileage'=>$mileage ,'type'=>$type ,'status'=>$status ,'technician'=>$technician, 'complians'=>$complians]);
+                        $stmt = $conn->prepare("INSERT INTO `requests`(`AutomobileID`, `EmployeeID`, `DateIn`, `DateDueOut`, `Mileage`, `Complians`, `TypeID`, `PickUpAddress`, `StatusID`) 
+                        VALUES (:auto,:technician,:in,:out,:mileage,:complians,:type,:pickup,:status)");
+                        $stmt->execute(['auto'=>$auto ,'in'=>$in ,'out'=>$out ,'mileage'=>$mileage ,'type'=>$type,'pickup'=>$pickup,'status'=>$status ,'technician'=>$technician, 'complians'=>$complians]);
                         $output['type'] = 'success';
                     
                     } catch (PDOException $th) {

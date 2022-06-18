@@ -57,15 +57,23 @@
         $("#suppliersTable").DataTable();
         $("#jobsTable").DataTable();
         $("#requestsTable").DataTable();
-
+        /* toggle pickup address visibility */
+        $(".types").change(function(){
+            var val = $(this).val();
+            if(val == 1){
+                $(".pickup").removeClass('hidden');
+            }else{
+                $(".pickup").addClass('hidden');
+            }
+        })
         /* fetch Regions */
-        $(".countries").on("change", function(){
+        $(".countries").change(function(){
             var countryId = $(this).val();
             getRegions(countryId)
             
         })
         /* fetch Cities */
-        $(".regions").on("change", function(){
+        $(".regions").change(function(){
             var regionId = $(this).val();
             getCities(regionId);
         })

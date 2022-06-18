@@ -2,8 +2,14 @@
     <i class="fa fa-bars aside-show"></i>
     <a href="index.php">
         <span class="logo">
-            <img src="../images/system/logo.png" alt="">
-            <span>HTU-JMTC</span>
+            <?php 
+                $conn = $pdo->open();
+               ?>
+            <img src="../images/system/<?php echo $rowSytem['Logo'] ?>" alt="">
+            <span><?php echo $rowSytem['ShortName'] ?></span>
+            <?php 
+                $pdo->close();
+            ?>
         </span>
     </a>
     <?php 

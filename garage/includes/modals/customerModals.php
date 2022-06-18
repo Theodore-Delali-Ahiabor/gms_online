@@ -388,8 +388,6 @@
                     }else if(response.type == "info"){
                         notify(response.message,'','info');
                     }else if(response.type == "success"){
-                        getRegions(response.countryId);
-                        getCities(response.cityId);
                         $("#editCustomerForm .id").val(response.id);
                         $("#editCustomerForm .customerPhoto").attr("src","../images/Profiles/"+response.photo);                       
                         $("#editCustomerForm .fname").val(response.fname);

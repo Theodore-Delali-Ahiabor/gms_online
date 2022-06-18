@@ -14,7 +14,7 @@
         $stmt->execute(['id'=>$id]);
         
         foreach($stmt as $row){
-            if(!empty($row['CustomerID'])){
+            if(!empty($row['CustomerID']) || $row['CustomerID'] != null){
                 $stmtC = $conn->prepare("SELECT * FROM `customers` `c`
                 JOIN `users` `u` ON `c`.`CustomerUserID` = `u`.`ID`
                 WHERE `c`.`ID`=:id");

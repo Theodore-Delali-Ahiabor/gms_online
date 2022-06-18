@@ -23,7 +23,7 @@
                         <span class="box-header-dot"></span> Add New Service Request
                     </span>
                     <span>
-                        <a href="jobs.php" class="btn btn-theme"><i class="fa fa-arrow-left"></i> Back</a>
+                        <a href="requests.php" class="btn btn-theme"><i class="fa fa-arrow-left"></i> Back</a>
                     </span>
                 </div>
                 <form action="" class="modal-form center" id="addNewRequestForm" >
@@ -47,7 +47,7 @@
                     </div>
                     <div class="form-row flex">
                         <div class="form-column ">
-                            <div class="left">Mileage <span class="required">*</span></div>
+                            <div class="left">Mileage(km)</div>
                             <input type="number" name="mileage" class="mileage" >
                         </div>
                         <div class="form-column">
@@ -69,8 +69,14 @@
                             </div>
                         </div>
                         <div class="form-columnx2 ">
-                            <div class="left">Complians <span class="required">*</span></div>
+                            <div class="left">Complians</div>
                             <input type="text" name="complians" class="complians" >
+                        </div>
+                    </div>
+                    <div class="form-row flex pickup hidden">
+                        <div class="form-columnx2 pickup hidden">
+                            <div class="left">Pickup Address</div>
+                            <input type="text" name="pickup" >
                         </div>
                     </div>
                     <input type="hidden" name="add">

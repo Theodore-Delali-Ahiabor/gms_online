@@ -1,6 +1,10 @@
 <aside>
     <i class="fa fa-angle-left aside-hide"></i>
-    <ul class="menu">
+    <div class="theme-fore-color bold">
+        <i class="fa fa-dot"></i>
+        <?php echo $_SESSION['department'] ?>
+    </div>
+    <ul class="menu" style="padding-top: 0;">
         <li class="<?php echo (!empty($thisPage) && $thisPage == 'Dashboard') ? 'menu-active' : '' ?>">
             <a href="index.php">
                 <i class=" fa fa-dashboard"></i>

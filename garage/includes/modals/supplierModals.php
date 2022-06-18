@@ -335,8 +335,6 @@
                     }else if(response.type == "info"){
                         notify(response.message,'','info');
                     }else if(response.type == "success"){
-                        getRegions(response.countryId);
-                        getCities(response.cityId);
                         $("#editSupplierForm .id").val(response.id);                      
                         $("#editSupplierForm .name").val(response.name);
                         $('#editSupplierForm .sectors option[value="'+response.sectorId+'"]').attr("selected", "selected");

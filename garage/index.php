@@ -21,12 +21,12 @@
                 //$requestsStmt = $conn->prepare("SELECT COUNT(*) AS 'total' FROM `users` WHERE `type` = 3");
                 $customersStmt = $conn->prepare("SELECT COUNT(*) AS 'total' FROM `customers`");
                 $employeesStmt = $conn->prepare("SELECT COUNT(*) AS 'total' FROM `employees`");
-                //$autostStmt = $conn->prepare("SELECT COUNT(*) AS 'total' FROM `support` WHERE `status`='0'");
+                $autostStmt = $conn->prepare("SELECT COUNT(*) AS 'total' FROM `automobiles`");
                 //$feedbackStmt = $conn->prepare("SELECT COUNT(*) AS 'total' FROM `feedbacks` WHERE `status`='0'");
             ?>
             
             <div class="grid no-margin info-palates ">
-                <div class="box info-palate flex">
+                <a href="customers.php" class="box info-palate flex">
                     <div class="image"><i class="fa fa-users fg-cadetblue" ></i></div>
                     <div class="value center">
                     <?php
@@ -36,8 +36,8 @@
                     ?>
                     </div>
                     <div class="name center">Customers</div>
-                </div>
-                <div class="box info-palate flex">
+                </a>
+                <a href="employees.php" class="box info-palate flex">
                     <div class="image"><i class="fa fa-users-gear fg-goldenrod" ></i></div>
                     <div class="value center">
                     <?php
@@ -47,12 +47,18 @@
                     ?>
                     </div>
                     <div class="name center">Employees</div>
-                </div>
-                <div class="box info-palate flex">
+                </a>
+                <a href="automobiles.php" class="box info-palate flex">
                     <div class="image"><i class="fa fa-car fg-black" ></i></div>
-                    <div class="value center">0</div>
+                    <div class="value center">
+                    <?php
+                        $autostStmt->execute();
+                        $autos = $autostStmt->fetch();
+                        echo number_format_short($autos['total']) ;
+                    ?>
+                    </div>
                     <div class="name center">Automobiles</div>
-                </div>
+                </a>
                 <div class="box info-palate flex">
                     <div class="image"><i class="fa fa-coins fg-forestgreen" ></i></div>
                     <div class="value center">&#8373; 0</div>

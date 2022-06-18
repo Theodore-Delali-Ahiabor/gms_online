@@ -32,12 +32,24 @@
             foreach ($stmtRegions as $rowRegions) {
                 $output['regions'] .=  "<option value='".$rowRegions['ID']."'>".$rowRegions['Region']."</option>";
             }
+        }else{
+            $stmtRegions = $conn->prepare("SELECT * FROM `regions` ORDER BY `Region` ");
+            $stmtRegions->execute();
+            foreach ($stmtRegions as $rowRegions) {
+                $output['regions'] .=  "<option value='".$rowRegions['ID']."'>".$rowRegions['Region']."</option>";
+            }
         }
         /* fetch cities */
         if(isset($_POST['regionId'])){
             $regionId = $_POST['regionId'];
             $stmtCities = $conn->prepare("SELECT * FROM `cities` WHERE `RegionID` = :regionId  ORDER BY `City`");
             $stmtCities->execute(['regionId'=>$regionId]);
+            foreach ($stmtCities as $rowCity) {
+                $output['cities'] .=  "<option value='".$rowCity['ID']."'>".$rowCity['City']."</option>";
+            }
+        }else{
+            $stmtCities = $conn->prepare("SELECT * FROM `cities` ORDER BY `City`");
+            $stmtCities->execute();
             foreach ($stmtCities as $rowCity) {
                 $output['cities'] .=  "<option value='".$rowCity['ID']."'>".$rowCity['City']."</option>";
             }
