@@ -76,8 +76,15 @@
                 </div>
             </div>
             <!-- Anual Sales Chart -->
-            <div class="box services">
-
+            <div class="box main">
+                <div class="table-custom-top flex align-center space-between">
+                    <span class="box-header no-margin">
+                        <span class="box-header-dot"></span> Anual Sales Chart
+                    </span>
+                    <span>
+                        <button class="btn btn-green"><i class="fa fa-print"></i> Print</abutton>
+                    </span>
+                </div>
             </div>
             <?php
                     }

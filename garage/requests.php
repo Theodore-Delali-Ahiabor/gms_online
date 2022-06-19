@@ -5,6 +5,9 @@
 <!-- page name -->
 <?php $thisPage = 'Service Requests' ?>
 
+<!-- Employees Modals -->
+<?php include 'includes/modals/requestModals.php' ?>
+
 <div class="layout-wrapper">
     <!-- aside -->
     <?php include 'includes/aside.php' ?>
@@ -89,8 +92,9 @@
                                             <td class="center">'.$row["Status"].'</td>
                                             <td>
                                                 <div class="center flex">
-                                                    <button class="btn btn-blue viewCustomer" data-id="'.$row["RequestID"].'"><i class="fa fa-eye"></i></button>
-                                                    <button class="btn btn-red deleteCustomer" data-id="'.$row["RequestID"].'"><i class="fa fa-trash"></i></button>
+                                                    <button class="btn btn-blue viewRequest" data-id="'.$row["RequestID"].'"><i class="fa fa-eye"></i></button>
+                                                    <a href="requestsEdit.php?id='.$row["RequestID"].'" class="btn btn-green"><i class="fa fa-pen"></i></a>
+                                                    <button class="btn btn-red deleteRequest" data-id="'.$row["RequestID"].'"><i class="fa fa-trash"></i></button>
                                                 </div>
                                             </td>
                                         </tr>

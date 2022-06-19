@@ -36,11 +36,19 @@
     
     <!-- toastr notification js -->
     <script src="assets/toastr/toastr.min.js"></script>
+    <!-- Data Tables -->
+    <link rel="stylesheet" href="assets/DataTables/datatables.css">
 
   </head>
   <body>
-    <a href="garage/">
-      <div class="bottom-left-conner flex center">
-        <i class="fa fa-car"></i>
-      </div>
-    </a>
+    <?php if(!isset($_SESSION['customer'])){
+      echo '
+      <a href="garage/">
+        <div class="bottom-left-conner flex center">
+          <i class="fa fa-car"></i>
+        </div>
+      </a>
+      ';
+    }
+    ?>
+    

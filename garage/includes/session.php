@@ -9,12 +9,12 @@
 	}else{
 		try {
 			$conn = $pdo->open();
-			$id = $_SESSION['employee'];
+			$employeeId = $_SESSION['employee'];
 			$stmtSession = $conn->prepare("SELECT *,`e`.`ID` AS `EmployeeID`, `u`.`ID` AS `UserID` FROM `employees` `e` 
             JOIN `users` `u` ON `u`.`ID` = `e`.`EmployeeUserID` 
             JOIN `departments` `d` ON `d`.`ID` = `e`.`DepartmentID`
 			WHERE `EmployeeUserID` = :id");
-			$stmtSession->execute(['id'=>$id]);
+			$stmtSession->execute(['id'=>$employeeId]);
 			$rowSession = $stmtSession->fetch();
 			$_SESSION['department'] = $rowSession['Department'];
 			

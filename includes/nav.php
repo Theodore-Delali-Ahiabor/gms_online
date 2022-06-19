@@ -5,8 +5,8 @@
             <?php 
                 $conn = $pdo->open();
             ?>
-            <img src="images/system/<?php echo $rowSytem['Logo'] ?>" alt="">
-            <span><?php echo $rowSytem['ShortName'] ?></span>
+            <img src="images/system/<?php echo $rowSystem['Logo'] ?>" alt="">
+            <span><?php echo $rowSystem['ShortName'] ?></span>
             <?php 
                 $pdo->close();
             ?>

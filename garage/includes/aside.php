@@ -71,8 +71,14 @@
                 <span>Suppliers</span>
             </a>
         </li>
+        <li class="<?php echo (!empty($thisPage) && $thisPage == 'Services') ? 'menu-active' : '' ?>">
+            <a href="services.php">
+                <i class="fa fa-tools"></i>
+                <span>Services</span>
+            </a>
+        </li>
         <li class="<?php echo (!empty($thisPage) && $thisPage == 'Settings') ? 'menu-active' : '' ?>">
-            <a href="settings">
+            <a href="settings.php">
                 <i class="fa fa-gear"></i>
                 <span>Settings</span>
             </a>

@@ -1,30 +1,13 @@
 <!-- notify js -->
-<script src="assets\js\notify.js"></script>
+<script src="assets/js/notify.js"></script>
+<!-- DataTables -->
+<script src="assets/DataTables/datatables.min.js"></script>
+<!-- CKEditor -->
+<script src="assets/ckeditor/ckeditor.js"></script>
+<!-- Scripts js -->
+<script src="assets/js/scripts.js"></script>
 <script>
     $(document).ready( function(){
-        /* Aside toggle */
-    $(".aside-show").click( function(){
-        $("aside").css("left", "0");
-        $("aside").css("transition", " all .4s ease-in");
-        $(".aside-hide").css("display", "block")
-    })
-    $(".aside-hide").click( function(){
-        $("aside").css("left", "-24rem");
-        $("aside").css("transition", " all .4s ease-out");
-        $(".aside-hide").css("display", "none")
-    })
-    /* Nav Dropdown */
-    $('.user').click(function(){
-        $('.user-dropdown').toggle();
-    })
-    $('.user').mouseover(function(){
-        $('.user-dropdown').show();
-    })
-    $('body').click(function(){
-        if($('.user-dropdown').show()){
-            $('.user-dropdown').hide();
-        }
-    })
     /* Carosel slider */
     let slideIndex = 0;
     let slide1Index = 0;
@@ -182,5 +165,5 @@
         });
     });
 })
-    
+
 </script>

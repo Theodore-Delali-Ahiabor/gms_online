@@ -47,7 +47,7 @@
                     </div>
                     <div class="form-row flex">
                         <div class="form-column ">
-                            <div class="left">Mileage(km)</div>
+                            <div class="left">Mileage (km)</div>
                             <input type="number" name="mileage" class="mileage" >
                         </div>
                         <div class="form-column">

@@ -19,20 +19,21 @@
             $null = null;
             $now = date("Y-m-d h:i:s");
 
-            /* add new request */
-            if(isset($_POST['add'])){      
-                /* Check if empty */
-                if(empty($auto) || empty($in) || empty($out) || empty($type) || $type==0 || $status==0 || empty($status) || empty($technician)){
-                    $output['type'] = 'error';
-                    $output['message'] = 'Please fill all required (*) fields';
-                }else if(!is_numeric($mileage)){
-                    $output['type'] = 'error';
-                    $output['message'] = 'Please enter a valid mileage';
-                }else if($type == 1 && empty($pickup)){
-                    $output['type'] = 'error';
-                    $output['message'] = 'Please enter a Pick Up address';
-                }
-                else{
+                
+            /* Check if empty */
+            if(empty($auto) || empty($in) || empty($out) || empty($type) || $type==0 || $status==0 || empty($status) || empty($technician)){
+                $output['type'] = 'error';
+                $output['message'] = 'Please fill all required (*) fields';
+            }else if(!is_numeric($mileage)){
+                $output['type'] = 'error';
+                $output['message'] = 'Please enter a valid mileage';
+            }else if($type == 1 && empty($pickup)){
+                $output['type'] = 'error';
+                $output['message'] = 'Please enter a Pick Up address';
+            }
+            else{
+                /* add new request */
+                if(isset($_POST['add'])){  
                     try {
                         $stmt = $conn->prepare("INSERT INTO `requests`(`AutomobileID`, `EmployeeID`, `DateIn`, `DateDueOut`, `Mileage`, `Complians`, `TypeID`, `PickUpAddress`, `StatusID`) 
                         VALUES (:auto,:technician,:in,:out,:mileage,:complians,:type,:pickup,:status)");
@@ -44,27 +45,20 @@
                         $output['message'] = $th->getMessage();
                     }
                 }
+                /* edit request */
+                else if(isset($_POST['edit'])){
+                    $id = htmlentities($_POST['id']);
 
-            }
-
-            /* edit request */
-            else if(isset($_POST['edit'])){
-                $id = htmlentities($_POST['id']);
-                $stmtRequest = $conn->prepare("SELECT * FROM `request` 
-                WHERE `ID`=:id");
-                $stmtRequest->execute(['id'=>$id]);
-                $rowRequest = $stmtRequest->fetch();
-
-                
-                try {
-                    $stmt = $conn->prepare("UPDATE `request` 
-                    SET `Photo`=:photo,`Name`=:name,`Alternative`=:alternative,`SerialNo`=:serial,`LocationID`=:location,`Shelve`=:shelve,`MakeID`=:make,`Model`=:model,`Stock`=:stock,`UnitCost`=:cost,`LastModified`=:now 
-                    WHERE `ID`= :id");
-                    $stmt->execute(['photo'=>$photo ,'name'=>$name ,'alternative'=>$alternative ,'serial'=>$serial ,'location'=>$location ,'shelve'=>$shelve ,'make'=>$make, 'model'=>$model, 'stock'=>$stock, 'cost'=>$cost, 'now'=>$now, 'id'=>$id]);
-                    $output['type'] = 'success';
-                } catch (PDOException $th) {
-                    $output['type'] = 'warning';
-                    $output['message'] = $th->getMessage();
+                    try {
+                        $stmt = $conn->prepare("UPDATE `requests` 
+                        SET `AutomobileID`=:auto,`EmployeeID`=:technician,`DateIn`=:in,`DateDueOut`=:out,`Mileage`=:mileage,`Complians`=:complians,`TypeID`=:type,`PickUpAddress`=:pickup,`StatusID`=:status,`LastModified`=:now 
+                        WHERE `ID`= :id");
+                        $stmt->execute(['auto'=>$auto ,'in'=>$in ,'out'=>$out ,'mileage'=>$mileage ,'type'=>$type,'pickup'=>$pickup,'status'=>$status ,'technician'=>$technician, 'complians'=>$complians, 'now'=>$now, 'id'=>$id]);
+                        $output['type'] = 'success';
+                    } catch (PDOException $th) {
+                        $output['type'] = 'warning';
+                        $output['message'] = $th->getMessage();
+                    }
                 }
             }
         }
@@ -74,24 +68,8 @@
             $id = htmlentities($_POST['id']);
 
             try {
-                $stmt = $conn->prepare("DELETE FROM `request` WHERE `id` = :id");
+                $stmt = $conn->prepare("DELETE FROM `requests` WHERE `ID` = :id");
                 $stmt->execute(['id'=> $id]);
-                $output['type'] = 'success';
-
-            } catch (PDOException $th) {
-                $output['type'] = 'warning';
-                $output['message'] = $th->getMessage();
-            }
-        }
-
-        /* add Supplier */
-        else if(isset($_POST['supplierId']) && isset($_POST['itemId'])){
-            try {
-                $supplierId = htmlentities($_POST['supplierId']);
-                $itemId = htmlentities($_POST['itemId']);
-
-                $stmt = $conn->prepare("UPDATE `request` SET `SupplierID` = :supplierId WHERE `ID` = :itemId");
-                $stmt->execute(['supplierId'=>$supplierId, 'itemId'=> $itemId]);
                 $output['type'] = 'success';
 
             } catch (PDOException $th) {

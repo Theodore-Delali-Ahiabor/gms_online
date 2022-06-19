@@ -7,26 +7,26 @@
                 <span>Home</span>
             </a>
         </li>
+        <?php if(isset($_SESSION['customer']) && !empty($_SESSION['customer']) ){ ?>
+        <li class="<?php echo (!empty($thisPage) && $thisPage == 'Appointments') ? 'menu-active' : '' ?>">
+            <a href="appointments.php">
+                <i class=" fa fa-book"></i>
+                <span>Appointments</span>
+            </a>
+        </li>
+        <li class="<?php echo (!empty($thisPage) && $thisPage == 'Automobiles') ? 'menu-active' : '' ?>">
+            <a href="automobiles.php">
+                <i class=" fa fa-car"></i>
+                <span>Automobiles</span>
+            </a>
+        </li>
+        <?php }?>
         <li class="<?php echo (!empty($thisPage) && $thisPage == 'Services') ? 'menu-active' : '' ?>">
             <a href="services.php">
                 <i class=" fa fa-tools"></i>
                 <span>Services</span>
             </a>
         </li>
-        <?php if(isset($_SESSION['customer']) && !empty($_SESSION['customer']) ){ ?>
-        <li uclass="<?php echo (!empty($thisPage) && $thisPage == 'Appointments') ? 'menu-active' : '' ?>">
-            <a href="">
-                <i class=" fa fa-book"></i>
-                <span>Appointments</span>
-            </a>
-        </li>
-        <li uclass="<?php echo (!empty($thisPage) && $thisPage == 'Automobiles') ? 'menu-active' : '' ?>">
-            <a href="">
-                <i class=" fa fa-car"></i>
-                <span>Automobiles</span>
-            </a>
-        </li>
-        <?php }?>
         <li class="<?php echo (!empty($thisPage) && $thisPage == 'Testimonials') ? 'menu-active' : '' ?>">
             <a href="testimonials.php">
                 <i class=" fa fa-quote-left"></i>
