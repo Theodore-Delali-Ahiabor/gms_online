@@ -102,7 +102,6 @@
     $('#addNewRequestForm').on('submit', function(e){
         e.preventDefault();
         data = $(this).serialize();
-        notify(data,"","info");
         $.ajax({
             type: "POST",
 			url: "requestsManage.php",

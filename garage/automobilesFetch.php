@@ -6,7 +6,7 @@
     try {
         $conn = $pdo->open();
         $id = $_POST['id'];
-        $stmt = $conn->prepare("SELECT *,`a`.`ID` AS `CustomerID` FROM `automobiles` `a`
+        $stmt = $conn->prepare("SELECT *,`a`.`ID` AS `AutomobileID` FROM `automobiles` `a`
         JOIN `makes` `m` ON `a`.`MakeID` = `m`.`ID`
         JOIN `categories` `c` ON `a`.`CategoryID` = `c`.`ID`
         JOIN `fuels` `f` ON `a`.`FuelID` = `f`.`ID` 
@@ -14,7 +14,7 @@
         $stmt->execute(['id'=>$id]);
         
         foreach($stmt as $row){
-            if(!empty($row['CustomerID']) || $row['CustomerID'] != null){
+            if(!empty($row['CustomerID'])){
                 $stmtC = $conn->prepare("SELECT * FROM `customers` `c`
                 JOIN `users` `u` ON `c`.`CustomerUserID` = `u`.`ID`
                 WHERE `c`.`ID`=:id");
@@ -25,7 +25,7 @@
                 $customer = '';
             }
             
-            $output['id'] = $row['CustomerID'];
+            $output['id'] = $row['AutomobileID'];
             $output['photo'] = !empty($row['Photo'])?$row['Photo']:'no-image.jpg';
             $output['categoryId'] = $row['CategoryID'];
             $output['category'] = $row['Category'];
@@ -38,7 +38,7 @@
             $output['registration'] = $row['RegNumber'];
             $output['makeId'] = $row['MakeID'];
             $output['make'] = $row['Make'];
-            $output['customer'] = $customer;
+            //$output['customer'] = $customer;
             
             $output['type'] = 'success';  
 

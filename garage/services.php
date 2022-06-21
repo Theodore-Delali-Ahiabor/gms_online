@@ -5,6 +5,9 @@
 <!-- page name -->
 <?php $thisPage = 'Services' ?>
 
+<!-- Employees Modals -->
+<?php include 'includes/modals/serviceModals.php' ?>
+
 <div class="layout-wrapper">
     <!-- aside -->
     <?php include 'includes/aside.php' ?>
@@ -15,42 +18,53 @@
             <?php include 'includes/nav.php' ?>
             
             <!-- services -->
-            <div class="box services">
-                <div class="box-header center">
-                   <span class="box-header-dot"></span> Services We Offer
+            <div class="box main">
+                <div class="table-custom-top flex align-center space-between">
+                    <span class="box-header no-margin">
+                        <span class="box-header-dot"></span> Services We Offer
+                    </span>
+                    <span>
+                        <a href="servicesReport.php" class="btn btn-theme-outline"><i class="fa fa-file"></i> Report</a>
+                        <button class="btn btn-theme newService"><i class="fa fa-plus"></i> Add New</button>
+                    </span>
                 </div>
-                <div class="flex box-body">
-                    <div class="services-wrapper">
-                        <span class="service">
-                            <img src="images/system/s1.jpg" alt="">
-                            <div class="center">
-                                <h3>Car Inspection</h3>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat laboriosam voluptate assumenda amet tempore quaerat?
-                            </div>
-                        </span>
-                        <span class="service">
-                            <img src="images/system/s2.jpg" alt="">
-                            <div class="center">
-                                <h3>Car cleaning</h3>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat laboriosam voluptate assumenda amet tempore quaerat?
-                            </div>
-                        </span>
-                        <span class="service">
-                            <img src="images/system/s3.jpg" alt="">
-                            <div class="center">
-                                <h3>Car Repair</h3>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat laboriosam voluptate assumenda amet tempore quaerat?
-                            </div>
-                        </span>
-                        <span class="service">
-                            <img src="images/system/s4.jpg" alt="">
-                            <div class="center">
-                                <h3>Consultation</h3>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat laboriosam voluptate assumenda amet tempore quaerat?
-                            </div>
-                        </span>
-                    </div>
-                </div>
+                <table>
+                <?php 
+                    try {
+                        $conn = $pdo->open();
+                
+                            $stmt = $conn->prepare("SELECT * FROM `services` ");
+                            $stmt->execute();
+
+                            foreach($stmt as $row){
+                                echo '<tr>
+                                    <td>
+                                        <span class="flex">
+                                            <img src="../images/system/'.(!empty($row['Photo'])?$row['Photo']:'no-image.jpg').'" alt="" width="220" style="margin: 0 2rem 1rem 0;">
+                                            <span class="left flex space-between column">
+                                                <h3>'.$row['Name'].'</h3>
+                                                <p>'.$row['Description'].'</p>
+                                                <div class="flex space-between">
+                                                    <span class="bold">
+                                                        GH&#8373;'.$row['Cost'].'
+                                                    </span>
+                                                    <span>
+                                                        <button class="btn btn-green"><i class="fa fa-pen"></i></button>
+                                                        <button class="btn btn-red"><i class="fa fa-trash"></i></button>
+                                                    </span>
+                                                </div>
+                                            </span>
+                                        </span>
+                                    </td>
+                                </tr>';
+                        }
+                            
+                        $pdo->close();
+                    } catch (PDOException $th) {
+                        echo $th->getMessage();
+                    }
+                    ?>
+                </table>
             </div>
             
             <!-- footer -->

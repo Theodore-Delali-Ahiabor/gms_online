@@ -84,6 +84,10 @@ body{
 .space-between{
     justify-content: space-between;
 }
+.column{
+    flex-direction: column;
+    flex-flow: column;
+}
 .align-center{
     align-items: center;
 }
@@ -233,6 +237,15 @@ body{
 .btn-green:hover{
     color: #51A351;
     background: #51A35129;
+    box-shadow: 0 0 .4rem #51A35129, 0 0 .4rem #51A351;
+}
+.btn-green-outline{
+    color: #51A351;
+    background: #51A35129;
+}
+.btn-green-outline:hover{
+    color: #fff;
+    background: #51A351;
     box-shadow: 0 0 .4rem #51A35129, 0 0 .4rem #51A351;
 }
 .btn-red{
@@ -515,6 +528,7 @@ body{
 .form-column select,
 .form-column select option,
 .form-row input,
+.form-row textarea,
 .form-row select{
     width: 100%;
     height: 100%;
@@ -542,6 +556,15 @@ body{
     padding: .3rem 1rem;
     margin: 0;
     font-size: 2.5rem;
+}
+.small-input{
+    width: 10rem;
+    height: 100%;
+    border-radius: .5rem;
+    border: .1rem solid #00407029;
+    outline: none;
+    padding: 1rem;
+    margin: .5rem 0;
 }
 .modalTitle {
     font-size: 2rem;

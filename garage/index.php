@@ -18,7 +18,7 @@
             
                 try{
                 //$salesStmt = $conn->prepare("SELECT SUM(`details`.`quantity` * `products`.`selling_price`) AS 'total' FROM `sales` JOIN `details` ON `details`.`sales_id` = `sales`.`id` JOIN `products` ON `products`.`id` = `details`.`product_id` WHERE `sales`.`sales_date` =  :now ");
-                //$requestsStmt = $conn->prepare("SELECT COUNT(*) AS 'total' FROM `users` WHERE `type` = 3");
+                $requestsStmt = $conn->prepare("SELECT COUNT(*) AS 'total' FROM `requests` WHERE `StatusID` = 1");
                 $customersStmt = $conn->prepare("SELECT COUNT(*) AS 'total' FROM `customers`");
                 $employeesStmt = $conn->prepare("SELECT COUNT(*) AS 'total' FROM `employees`");
                 $autostStmt = $conn->prepare("SELECT COUNT(*) AS 'total' FROM `automobiles`");
@@ -71,8 +71,14 @@
                 </div>
                 <div class="box info-palate flex">
                     <div class="image"><i class="fa fa-calendar fg-salmon" ></i></div>
-                    <div class="value center">0</div>
-                    <div class="name center">Appointments</div>
+                    <div class="value center">
+                        <?php
+                            $requestsStmt->execute();
+                            $request = $requestsStmt->fetch();
+                            echo number_format_short($request['total']) ;
+                        ?>
+                    </div>
+                    <div class="name center">Requests</div>
                 </div>
             </div>
             <!-- Anual Sales Chart -->

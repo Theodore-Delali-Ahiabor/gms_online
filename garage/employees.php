@@ -61,7 +61,7 @@
                                                 <td class="center">'.$row["EmployeeID"].'</td>
                                                 <td class="center"><img src="../images/profiles/'.((!empty($row["Photo"])?$row["Photo"]:'no-profile.jpg')).'" width="60"></td>
                                                 <td>'.$row["FirstName"].' '.$row["OtherName"].' '.$row["LastName"].'</td>
-                                                <td>'.$row["Department"].'<br>'.$row["Position"].'</td>
+                                                <td>'.$row["Department"].' | <br>'.$row["Position"].'</td>
                                                 <td>'.$row["Email"].'<br>'.$row["Phone"].'</td>
                                                 <td>
                                                     '.

@@ -5,6 +5,9 @@
 <!-- page name -->
 <?php $thisPage = 'Jobs' ?>
 
+<!-- Employees Modals -->
+<?php include 'includes/modals/jobModals.php' ?>
+
 <div class="layout-wrapper">
     <!-- aside -->
     <?php include 'includes/aside.php' ?>
@@ -17,7 +20,7 @@
             <div class="box main">
                 <div class="table-custom-top flex align-center space-between">
                     <span class="box-header no-margin">
-                        <span class="box-header-dot"></span> List of Jobs
+                        <span class="box-header-dot"></span> Pending Jobs
                     </span>
                     <span>
                         <a href="jobsReport.php" class="btn btn-theme-outline"><i class="fa fa-file"></i> Report</a>
@@ -30,9 +33,9 @@
                             <th>Customer</th>
                             <th>Automobile</th>
                             <th>Complians</th>
+                            <th>Date Due</th>
                             <th>Parts</th>
                             <th>Services</th>
-                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -44,7 +47,7 @@
                                 $stmt = $conn->prepare("SELECT *,`r`.`ID` AS `RequestID` FROM `requests` `r` 
                                 JOIN `types` `t` ON `t`.`ID` = `r`.`TypeID`
                                 JOIN `status` `s` ON `s`.`ID` = `r`.`StatusID`
-                                WHERE `EmployeeID` = :id");
+                                WHERE `EmployeeID` = :id && `StatusID` = 1 || `StatusID` = 2");
                                 $stmt->execute(['id'=>$rowSession['EmployeeID']]);
 
                                 foreach($stmt as $row){
@@ -70,18 +73,69 @@
                                             $customer = $rowC['FirstName'].' '.$rowC['OtherName'].' '.$rowC['LastName'].'<br>'.$rowC['Phone'];
                                         }
                                     }
+                                    if($row["Status"] == "Pending"){
+                                        $parts = '';
+                                        $services = '';
+                                    }else if($row["Status"] == "In Progress"){
+                                            $stmtS = $conn->prepare("SELECT * FROM `jobs` `j`
+                                            JOIN `requests` `r` ON `j`.`RequestID` = `r`.`ID`
+                                            WHERE `j`.`RequestID`=:id");
+                                            $stmtS->execute(['id'=>$row['RequestID']]);
+                                            $rowS = $stmtS->fetch();
+                                            $serviceArray = explode(",", $rowS['ServiceIDs']);
+                                            $partQtyArray = explode(",", $rowS['PartQtys']);
+                                            $partArray = explode(",", $rowS['PartIDs']);
+                                            //echo "<script>getServices(".$serviceArray.",1)</script>";
+                                            $serviceCost = 0;
+                                            $partCost = 0;
+                                            if(!empty($serviceArray)){
+                                                foreach($serviceArray as $service){
+                                                    $stmtSe = $conn->prepare("SELECT * FROM `services`
+                                                    WHERE `ID`=:id");
+                                                    $stmtSe->execute(['id'=>$service]);
+                                                    $rowSe = $stmtSe->fetch();
+                                                    $serviceCost += !empty($rowSe['Cost'])?$rowSe['Cost']:0.00;
+                                                }
+                                            }
+                                            if(!empty($partArray)){
+                                                foreach($partArray as $part){
+                                                    $stmtP = $conn->prepare("SELECT * FROM `inventory`
+                                                    WHERE `ID`=:id");
+                                                    $stmtP->execute(['id'=>$part]);
+                                                    $rowP = $stmtP->fetch();
+                                                    foreach($partQtyArray as $qty){
+                                                        $subcost = !empty($rowP['UnitCost'])?$rowP['UnitCost']*$qty:0.00;
+                                                        $partCost += $subcost;
+                                                    }
+                                                }
+                                            }
+                                        $parts = '  
+                                                <div class="flex center space-between">
+                                                    <span class="left"> '.count($partArray).' Parts | &#8373;'.$partCost.' </span>
+                                                    <span class="right">
+                                                        <button class="addParts btn btn-theme-outline no-border" data-id="'.$row["RequestID"].'"><i class="fa fa-plus"></i></button>
+                                                    </span>
+                                                </div>';
+                                        $services = '
+                                                <div class="flex center space-between">
+                                                    <span class="left"> '.count($serviceArray).' Services | &#8373;'.$serviceCost.' </span>
+                                                    <span class="right">
+                                                        <button class="addServices btn btn-theme-outline no-border" data-id="'.$row["RequestID"].'"><i class="fa fa-plus"></i></button>
+                                                    </span>
+                                                </div>';
+                                    }
                                     echo '
                                         <tr>
                                             <td class="center">'.$row["RequestID"].'</td>
                                             <td>'.$customer.'</td>
                                             <td>'.$auto.'</td>
                                             <td>'.$row['Complians'].'</td>
-                                            <td></td>
-                                            <td></td>
-                                            <td class="center">'.$row["Status"].'</td>
+                                            <td>'.$row['DateDueOut'].'</td>
+                                            <td>'.$parts.'</td>
+                                            <td>'.$services.'</td>
                                             <td>
                                                 <div class="center flex">
-                                                    <button class="btn btn-blue viewCustomer" data-id="'.$row["RequestID"].'"><i class="fa fa-eye"></i></button>
+                                                    <button class="btn btn-green '.(($row["Status"] == "Pending")?"startJob":(($row["Status"] == "In Progress")?"doneJob":"")).'" data-id="'.$row["RequestID"].'"><i class="fa fa-'.(($row["Status"] == "Pending")?"play":(($row["Status"] == "In Progress")?"check":"")).'"></i></button>
                                                 </div>
                                             </td>
                                         </tr>

@@ -3,10 +3,7 @@
 <!-- head -->
 <?php include 'includes/head.php' ?>
 <!-- page name -->
-<?php $thisPage = 'Service Requests' ?>
-
-<!-- Employees Modals -->
-<?php include 'includes/modals/requestModals.php' ?>
+<?php $thisPage = 'Jobs' ?>
 
 <div class="layout-wrapper">
     <!-- aside -->
@@ -23,18 +20,18 @@
                         <span class="box-header-dot"></span> List of Jobs
                     </span>
                     <span>
-                        <a href="requestsReport.php" class="btn btn-theme-outline"><i class="fa fa-file"></i> Report</a>
-                        <a href="requestsAdd.php"  class="btn btn-theme"><i class="fa fa-plus"></i> Add New</a>
+                        <a href="jobsReport.php" class="btn btn-theme-outline"><i class="fa fa-file"></i> Report</a>
                     </span>
                 </div>
-                <table id="requestsTable">
+                <table id="jobsTable">
                     <thead>
                         <tr>
                             <th>ID</th>
                             <th>Customer</th>
                             <th>Automobile</th>
-                            <th>Technician</th>
                             <th>Complians</th>
+                            <th>Parts</th>
+                            <th>Services</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
@@ -46,22 +43,13 @@
                     
                                 $stmt = $conn->prepare("SELECT *,`r`.`ID` AS `RequestID` FROM `requests` `r` 
                                 JOIN `types` `t` ON `t`.`ID` = `r`.`TypeID`
-                                JOIN `status` `s` ON `s`.`ID` = `r`.`StatusID`");
-                                $stmt->execute();
+                                JOIN `status` `s` ON `s`.`ID` = `r`.`StatusID`
+                                WHERE `EmployeeID` = :id");
+                                $stmt->execute(['id'=>$rowSession['EmployeeID']]);
 
                                 foreach($stmt as $row){
                                     $auto = '';
                                     $customer = '';
-                                    $technician = '';
-                                    if(!empty($row['EmployeeID'])){
-                                        $stmtEmployee = $conn->prepare("SELECT *,`e`.`ID` AS `EmployeeID`, `u`.`ID` AS `UserID` FROM `employees` `e` 
-                                        JOIN `users` `u` ON `u`.`ID` = `e`.`EmployeeUserID`  
-                                        WHERE `e`.`ID`= :id");
-                                        $stmtEmployee->execute(['id'=>$row['EmployeeID']]);
-                                        $rowEmployee = $stmtEmployee->fetch();
-                                        $technician = $rowEmployee["FirstName"].' '.$rowEmployee["OtherName"].' '.$rowEmployee["LastName"].'<br>'.
-                                        $rowEmployee["Position"];    
-                                    }
                                     if(!empty($row['AutomobileID'])){
                                         $stmtAuto = $conn->prepare("SELECT *,`a`.`ID` AS `AutoID` FROM `automobiles` `a`
                                         JOIN `makes` `m` ON `a`.`MakeID` = `m`.`ID`
@@ -87,14 +75,13 @@
                                             <td class="center">'.$row["RequestID"].'</td>
                                             <td>'.$customer.'</td>
                                             <td>'.$auto.'</td>
-                                            <td>'.$technician.'</td>
                                             <td>'.$row['Complians'].'</td>
+                                            <td></td>
+                                            <td></td>
                                             <td class="center">'.$row["Status"].'</td>
                                             <td>
                                                 <div class="center flex">
-                                                    <button class="btn btn-blue viewRequest" data-id="'.$row["RequestID"].'"><i class="fa fa-eye"></i></button>
-                                                    <a href="requestsEdit.php?id='.$row["RequestID"].'" class="btn btn-green"><i class="fa fa-pen"></i></a>
-                                                    <button class="btn btn-red deleteRequest" data-id="'.$row["RequestID"].'"><i class="fa fa-trash"></i></button>
+                                                    <button class="btn btn-blue viewCustomer" data-id="'.$row["RequestID"].'"><i class="fa fa-eye"></i></button>
                                                 </div>
                                             </td>
                                         </tr>

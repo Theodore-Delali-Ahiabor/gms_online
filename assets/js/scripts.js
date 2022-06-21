@@ -135,6 +135,16 @@ function getCombo(){
         }
     });
 }
+/* fetch request related parts */
+function getParts(){
+
+}
+/* fetch request related services */
+function getServices(array,id){
+    console.log("services="+array);
+    console.log("id="+id);
+}
+
 /* print anyting */
 function printContent(page){
     var fullPage = $("body").html();
