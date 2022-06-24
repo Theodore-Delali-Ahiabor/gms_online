@@ -5,6 +5,9 @@
 <!-- page name -->
 <?php $thisPage = 'Invoice' ?>
 
+<!-- Invoice Modals -->
+<?php include 'includes/modals/invoiceModals.php' ?>
+
 <div class="layout-wrapper">
     <!-- aside -->
     <?php include 'includes/aside.php' ?>
@@ -17,11 +20,7 @@
             <div class="box main">
                 <div class="table-custom-top flex align-center space-between">
                     <span class="box-header no-margin">
-                        <span class="box-header-dot"></span> List of Customers
-                    </span>
-                    <span>
-                        <a href="customersReport.php" class="btn btn-theme-outline"><i class="fa fa-file"></i> Report</a>
-                        <button class="btn btn-theme newCustomer"><i class="fa fa-plus"></i> Add New</button>
+                        <span class="box-header-dot"></span> List of Invoice
                     </span>
                 </div>
                 <table id="jobsTable">
@@ -101,8 +100,8 @@
                                                     $rowP = $stmtP->fetch();
                                                     foreach($partQtyArray as $qty){
                                                         $subcost = !empty($rowP['UnitCost'])?$rowP['UnitCost']*$qty:0.00;
-                                                        $partCost += $subcost;
                                                     }
+                                                    $partCost += $subcost;
                                                 }
                                             }
                                             $total = $partCost + $serviceCost;
@@ -126,7 +125,7 @@
                                             <td>
                                                 <div class="center flex">
                                                     <button class="btn btn-blue"><i class="fa fa-eye"></i></button> 
-                                                    <button class="btn btn-green invoicePay" data-id="'.$row["InvoiceID"].'"><i class="fa fa-dollar"></i></button>
+                                                    '.(($row['PaymentStatus'] == 1)? '<button class="btn btn-green invoicePay" data-id="'.$row["InvoiceID"].'"><i class="fa fa-dollar"></i></button>':'').'
                                                 </div>
                                             </td>
                                         </tr>

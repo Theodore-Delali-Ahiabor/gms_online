@@ -1,10 +1,10 @@
 <?php
-	include '../includes/dbconn.php';
+	include '../../includes/dbconn.php';
 	
     session_start();
 
-	if(!isset($_SESSION['employee'])){
-		header('location: ../signin.php');
+	if(!isset($_SESSION['employee']) && $_SESSION['Labour']){
+		header('location: ../../signin.php');
 		exit();
 	}else{
 		try {
@@ -36,5 +36,4 @@
 	$output['type'] = '';
   	$output['message'] = '';
 	
-	include 'slugify.php';
 ?>

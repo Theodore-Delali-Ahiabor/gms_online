@@ -18,6 +18,9 @@
 			$rowSession = $stmtSession->fetch();
 			$_SESSION['department'] = $rowSession['Department'];
 			
+			if($rowSession['Department'] == "Labour"){
+				header('location: labour/jobs.php');
+			}
 
 			$stmtSytem = $conn->prepare("SELECT *, `g`.`ID` AS `GarageID`, COUNT(*) AS `numrows` FROM `garage` `g`
 			JOIN `addresses` `a` ON `g`.`AddressID` = `a`.`ID`

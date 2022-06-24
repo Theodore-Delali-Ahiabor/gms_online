@@ -232,6 +232,8 @@
         $(".serviceSelect").on("click",function(){
             var id = $(this).data("id");
             var statVal = $(".service"+id+" input").val();
+            $(this).toggleClass("fa-square");
+            $(this).toggleClass("fa-check");
             if(statVal == 1){
                 $(".service"+id+" input").val(2);
                 if(!services.includes(id)){

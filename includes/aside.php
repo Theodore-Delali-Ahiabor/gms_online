@@ -20,6 +20,12 @@
                 <span>Automobiles</span>
             </a>
         </li>
+        <li class="<?php echo (!empty($thisPage) && $thisPage == 'Profile') ? 'menu-active' : '' ?>">
+            <a href="profile.php">
+                <i class=" fa fa-user"></i>
+                <span>Profile</span>
+            </a>
+        </li>
         <?php }?>
         <li class="<?php echo (!empty($thisPage) && $thisPage == 'Services') ? 'menu-active' : '' ?>">
             <a href="services.php">
@@ -27,28 +33,22 @@
                 <span>Services</span>
             </a>
         </li>
-        <li class="<?php echo (!empty($thisPage) && $thisPage == 'Testimonials') ? 'menu-active' : '' ?>">
+        <li class="<?php echo (!empty($thisPage) && $thisPage == 'Testimonials') ? 'menu-active' : '' ?> hidden">
             <a href="testimonials.php">
                 <i class=" fa fa-quote-left"></i>
                 <span>Testimonials</span>
             </a>
         </li>
         <li class="<?php echo (!empty($thisPage) && $thisPage == 'About Us') ? 'menu-active' : '' ?>">
-            <a href="">
+            <a href="aboutUs.php">
                 <i class=" fa fa-question"></i>
                 <span>About Us</span>
             </a>
         </li>
         <li class="<?php echo (!empty($thisPage) && $thisPage == 'Contact Us') ? 'menu-active' : '' ?>">
-            <a href="">
+            <a href="contactUs.php">
                 <i class="fa fa-headset"></i>
                 <span>Contact Us</span>
-            </a>
-        </li>
-        <li class="<?php echo (!empty($thisPage) && $thisPage == 'FAQ') ? 'menu-active' : '' ?>">
-            <a href="faq.php">
-                <i class=" fa fa-message"></i>
-                <span>FAQ</span>
             </a>
         </li>
     </ul>

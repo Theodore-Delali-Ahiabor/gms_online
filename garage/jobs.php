@@ -5,7 +5,7 @@
 <!-- page name -->
 <?php $thisPage = 'Jobs' ?>
 
-<!-- Employees Modals -->
+<!-- Jobs Modals -->
 <?php include 'includes/modals/jobModals.php' ?>
 
 <div class="layout-wrapper">
@@ -105,8 +105,8 @@
                                                     $rowP = $stmtP->fetch();
                                                     foreach($partQtyArray as $qty){
                                                         $subcost = !empty($rowP['UnitCost'])?$rowP['UnitCost']*$qty:0.00;
-                                                        $partCost += $subcost;
                                                     }
+                                                    $partCost += $subcost;
                                                 }
                                             }
                                         $parts = '  

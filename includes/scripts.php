@@ -6,6 +6,8 @@
 <script src="assets/ckeditor/ckeditor.js"></script>
 <!-- Scripts js -->
 <script src="assets/js/scripts.js"></script>
+<!-- Chart js -->
+<script src="assets/chartjs/dist/chart.js"></script>
 <script>
     $(document).ready( function(){
     /* Carosel slider */

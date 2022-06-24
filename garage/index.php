@@ -17,12 +17,16 @@
                 $conn = $pdo->open();
             
                 try{
-                //$salesStmt = $conn->prepare("SELECT SUM(`details`.`quantity` * `products`.`selling_price`) AS 'total' FROM `sales` JOIN `details` ON `details`.`sales_id` = `sales`.`id` JOIN `products` ON `products`.`id` = `details`.`product_id` WHERE `sales`.`sales_date` =  :now ");
+                $year = date("Y");
+                $month = date("m");
+                $day = date("d");
+                $salesStmt = $conn->prepare("SELECT SUM(`Total`) AS 'total' FROM `sales` WHERE YEAR(`Date`) = '$year' && MONTH(`Date`) = '$month' && Day(`Date`) = '$day' ");
                 $requestsStmt = $conn->prepare("SELECT COUNT(*) AS 'total' FROM `requests` WHERE `StatusID` = 1");
                 $customersStmt = $conn->prepare("SELECT COUNT(*) AS 'total' FROM `customers`");
                 $employeesStmt = $conn->prepare("SELECT COUNT(*) AS 'total' FROM `employees`");
                 $autostStmt = $conn->prepare("SELECT COUNT(*) AS 'total' FROM `automobiles`");
-                //$feedbackStmt = $conn->prepare("SELECT COUNT(*) AS 'total' FROM `feedbacks` WHERE `status`='0'");
+                $inventoryStmt = $conn->prepare("SELECT COUNT(*) AS 'total' FROM `inventory`");
+                //$feedbackStmt = $conn->prepare("SELECT COUNT(*) AS 'total' FROM `feedbacks` WHERE `status`='0'");'year'=>$year, 'month'=>$month, 'day'=>$day
             ?>
             
             <div class="grid no-margin info-palates ">
@@ -61,13 +65,25 @@
                 </a>
                 <div class="box info-palate flex">
                     <div class="image"><i class="fa fa-coins fg-forestgreen" ></i></div>
-                    <div class="value center">&#8373; 0</div>
+                    <div class="value center">&#8373; 
+                    <?php
+                        $salesStmt->execute();
+                        $sales = $salesStmt->fetch();
+                        echo number_format_short($sales['total']) ;
+                    ?>
+                    </div>
                     <div class="name center">Sales Today</div>
                 </div>
                 <div class="box info-palate flex">
-                    <div class="image"><i class="fa fa-message fg-teal" ></i></div>
-                    <div class="value center">0</div>
-                    <div class="name center">Feedbacks</div>
+                    <div class="image"><i class="fa-solid fa-warehouse fg-teal" ></i></div>
+                    <div class="value center">
+                    <?php
+                        $inventoryStmt->execute();
+                        $inventory = $inventoryStmt->fetch();
+                        echo number_format_short($inventory['total']) ;
+                    ?>
+                    </div>
+                    <div class="name center">inventory</div>
                 </div>
                 <div class="box info-palate flex">
                     <div class="image"><i class="fa fa-calendar fg-salmon" ></i></div>
@@ -88,8 +104,11 @@
                         <span class="box-header-dot"></span> Anual Sales Chart
                     </span>
                     <span>
-                        <button class="btn btn-green"><i class="fa fa-print"></i> Print</abutton>
+                        <button class="btn btn-green printSales hidden"><i class="fa fa-print"></i> Print</abutton>
                     </span>
+                </div>
+                <div >
+                <?php include 'includes/salesChart.php' ?>
                 </div>
             </div>
             <?php
@@ -108,5 +127,10 @@
 </div>
 <!-- scripts -->
 <?php include 'includes/scripts.php' ?>
+<script>
+    $('.printSales').on('click', function(){
+        printContent("#myChart");
+    })
+</script>
 <!-- foot -->
 <?php include 'includes/foot.php' ?>

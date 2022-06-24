@@ -20,34 +20,30 @@
                 </div>
                 <div class="flex box-body">
                     <div class="services-wrapper">
-                        <span class="service">
-                            <img src="images/system/s1.jpg" alt="">
-                            <div class="center">
-                                <h3>Car Inspection</h3>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat laboriosam voluptate assumenda amet tempore quaerat?
-                            </div>
-                        </span>
-                        <span class="service">
-                            <img src="images/system/s2.jpg" alt="">
-                            <div class="center">
-                                <h3>Car cleaning</h3>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat laboriosam voluptate assumenda amet tempore quaerat?
-                            </div>
-                        </span>
-                        <span class="service">
-                            <img src="images/system/s3.jpg" alt="">
-                            <div class="center">
-                                <h3>Car Repair</h3>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat laboriosam voluptate assumenda amet tempore quaerat?
-                            </div>
-                        </span>
-                        <span class="service">
-                            <img src="images/system/s4.jpg" alt="">
-                            <div class="center">
-                                <h3>Consultation</h3>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat laboriosam voluptate assumenda amet tempore quaerat?
-                            </div>
-                        </span>
+                    <?php 
+                        try {
+                            $conn = $pdo->open();
+                    
+                                $stmt = $conn->prepare("SELECT * FROM `services` ");
+                                $stmt->execute();
+
+                                foreach($stmt as $row){
+                                    echo '
+                                        <span class="service">
+                                            <img src="images/system/'.(!empty($row['Photo'])?$row['Photo']:'no-image.jpg').'" alt="">
+                                            <div class="center">
+                                                <h3>'.$row['Name'].'</h3>
+                                                '.$row['Description'].'
+                                            </div>
+                                        </span>
+                                        ';
+                            }
+                                
+                            $pdo->close();
+                        } catch (PDOException $th) {
+                            echo $th->getMessage();
+                        }
+                    ?>
                     </div>
                 </div>
             </div>

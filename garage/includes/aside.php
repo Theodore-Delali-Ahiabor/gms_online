@@ -29,7 +29,7 @@
                 <span>Invoice</span>
             </a>
         </li>
-        <li class="<?php echo (!empty($thisPage) && $thisPage == 'Testimonials') ? 'menu-active' : '' ?>">
+        <li class="<?php echo (!empty($thisPage) && $thisPage == 'Testimonials') ? 'menu-active' : '' ?> hidden">
             <a href="testimonials.php">
                 <i class=" fa fa-message"></i>
                 <span>Testimonials</span>
