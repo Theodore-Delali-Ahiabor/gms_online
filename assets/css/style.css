@@ -240,6 +240,7 @@ nav{
 table{
     width: 100%;
     overflow-x: auto;
+    display: block;
 }
 table tr td img{
     border-radius: 1rem !important;

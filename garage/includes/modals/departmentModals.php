@@ -136,7 +136,6 @@
                 }else if(response.type == "info"){
                     notify(response.message,'','info');
                 }else if(response.type == "success"){
-                    notify(response.message,'','success');
                     location.reload(true)
                     
                 }
@@ -161,7 +160,6 @@
                 }else if(response.type == "info"){
                     notify(response.message,'','info');
                 }else if(response.type == "success"){
-                    notify(response.message,'','success');
                     location.reload(true);
                 }
             }

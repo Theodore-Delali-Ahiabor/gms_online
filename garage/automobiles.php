@@ -67,7 +67,7 @@
                                     echo '
                                         <tr>
                                             <td class="center">'.$row["AutoID"].'</td>
-                                            <td class="center"><img src="../images/autos/'.((!empty($row["Photo"])?$row["Photo"]:'no-image.jpg')).'" width="60"></td>
+                                            <td class="center"><img src="../images/autos/'.((!empty($row["Photo"])?$row["Photo"]:'no-image.jpg')).'" height="60"></td>
                                             <td>'.$row['Color'].', '.$row['Year'].', '.$row['Category'].'<br>'.$row['Make'].', '.$row['Model'].'</td>
                                             <td>'.$row['Fuel'].'</td>
                                             <td>'.$row['VIN'].'</td>

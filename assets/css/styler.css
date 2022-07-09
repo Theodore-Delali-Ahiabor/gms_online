@@ -158,23 +158,51 @@ body{
     display: flex;
     flex-wrap: nowrap;
  }
- .box-half{
+ .half{
     width: 50%;
+ }
+.padding-all{
     padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    flex-flow: column;
-    justify-items: center;
- }
- @media only screen and (max-width: 768px){
-    .box-full{
-        flex-wrap: wrap;
-        flex-flow: column;
-    }
-    .box-half{
-        width: 100%;
-    }
- }
+}
+.padding-right{
+    padding-right: 1rem;
+}
+.padding-left{
+    padding-left: 1rem;
+}
+.padding-top{
+    padding-top: 1rem;
+}
+.padding-bottom{
+    padding-bottom: 1rem;
+}
+.margin-all{
+    margin: 1rem;
+}
+.margin-left{
+    margin-left: 1rem;
+}
+.margin-right{
+    margin-right: 1rem;
+}
+.margin-top{
+    margin-top: 1rem;
+}
+.margin-bottom{
+    margin-bottom: 1rem;
+}
+.solid-border-left{
+    border-left: .1rem solid;
+}
+.solid-border-right{
+    border-right: .1rem solid;
+}
+.solid-border-top{
+    border-top: .1rem solid;
+}
+.solid-border-bottom{
+    border-bottom: .1rem solid;
+}
 /* input */
 .search-box-blue{
     padding: 0.4rem 1rem;

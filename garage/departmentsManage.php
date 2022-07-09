@@ -16,7 +16,7 @@
             }
             else{
                 /* Check if department exist */
-                $stmt = $conn->prepare("SELECT *, COUNT(*) AS numrows FROM `departments` WHERE name=:name");
+                $stmt = $conn->prepare("SELECT *, COUNT(*) AS numrows FROM `departments` WHERE `Department`=:name");
                 $stmt->execute(['name'=>$name]);
                 $row = $stmt->fetch();
 

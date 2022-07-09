@@ -74,7 +74,7 @@
                     </div>
                     <div class="name center">Sales Today</div>
                 </div>
-                <div class="box info-palate flex">
+                <a href="inventory.php" class="box info-palate flex">
                     <div class="image"><i class="fa-solid fa-warehouse fg-teal" ></i></div>
                     <div class="value center">
                     <?php
@@ -84,8 +84,8 @@
                     ?>
                     </div>
                     <div class="name center">inventory</div>
-                </div>
-                <div class="box info-palate flex">
+                </a>
+                <a href="requests.php" class="box info-palate flex">
                     <div class="image"><i class="fa fa-calendar fg-salmon" ></i></div>
                     <div class="value center">
                         <?php
@@ -95,7 +95,7 @@
                         ?>
                     </div>
                     <div class="name center">Requests</div>
-                </div>
+                </a>
             </div>
             <!-- Anual Sales Chart -->
             <div class="box main">

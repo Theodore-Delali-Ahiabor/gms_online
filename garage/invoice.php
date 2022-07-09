@@ -124,7 +124,7 @@
                                             <td class="center">&#8373;'.$total.'</td>
                                             <td>
                                                 <div class="center flex">
-                                                    <button class="btn btn-blue"><i class="fa fa-eye"></i></button> 
+                                                    <button class="btn btn-blue invoiceView" data-id="'.$row["InvoiceID"].'"><i class="fa fa-eye"></i></button> 
                                                     '.(($row['PaymentStatus'] == 1)? '<button class="btn btn-green invoicePay" data-id="'.$row["InvoiceID"].'"><i class="fa fa-dollar"></i></button>':'').'
                                                 </div>
                                             </td>
